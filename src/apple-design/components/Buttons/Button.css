@@ -74,6 +74,10 @@
     border-radius: 12px;
 }
 
+.button.medium {
+    min-height: 34px;
+}
+
 .button.small {
     padding: 4px 10px;
 }

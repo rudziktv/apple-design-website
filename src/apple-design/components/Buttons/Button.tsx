@@ -2,7 +2,8 @@ import "./Button.css";
 
 const Button = ({
     title,
-    icon,
+    leadingIcon,
+    trailingIcon,
     buttonType = "semi",
     buttonSize = "medium",
     ...props
@@ -12,8 +13,13 @@ const Button = ({
             {...props}
             className={`button ${props.className} ${buttonType} ${buttonSize}`}
         >
-            {icon && <div className="button-icon">{icon}</div>}
+            {leadingIcon && (
+                <div className="button-icon leading-icon">{leadingIcon}</div>
+            )}
             {title && <span>{title}</span>}
+            {trailingIcon && (
+                <div className="button-icon trailing-icon">{trailingIcon}</div>
+            )}
         </button>
     );
 };
@@ -21,7 +27,8 @@ const Button = ({
 export interface ButtonProps
     extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     title?: string;
-    icon?: React.ReactNode;
+    leadingIcon?: React.ReactNode;
+    trailingIcon?: React.ReactNode;
 
     buttonType?: "primary" | "semi" | "container" | "text";
     buttonSize?: "small" | "medium" | "large";
