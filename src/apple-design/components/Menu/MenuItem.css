@@ -44,3 +44,13 @@
 .menu-item.red {
     color: #ff453a;
 }
+
+.menu-item-divider {
+    /* align-self: stretch; */
+    /* width: 100%; */
+
+    margin: 0;
+    border: 0;
+    height: 1px;
+    background-color: var(--border-color);
+}

@@ -8,7 +8,12 @@ const Menu = ({ children, options }: MenuProps) => {
                 {children}
                 <div className="menu-items">
                     {options.map((option, index) => (
-                        <MenuItem key={index} {...option} />
+                        <>
+                            {index > 0 && (
+                                <hr className="menu-item-divider" key={index} />
+                            )}
+                            <MenuItem key={index} {...option} />
+                        </>
                     ))}
                 </div>
             </div>

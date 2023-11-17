@@ -1,0 +1,39 @@
+.toggle-track {
+    width: 51px;
+    height: 31px;
+
+    border-radius: 15.5px;
+
+    background-color: rgba(235, 235, 245, 0.2);
+
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.toggle-thumb {
+    width: 27px;
+    height: 27px;
+
+    border-radius: 13.5px;
+
+    background-color: white;
+
+    transform: translateX(2px);
+
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.15);
+
+    transition: 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.toggled.toggle-track {
+    background-color: var(--green-color);
+}
+
+.toggled > .toggle-thumb {
+    transform: translateX(22px);
+}
