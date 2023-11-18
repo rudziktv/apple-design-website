@@ -6,6 +6,8 @@ import MenuItem from "./apple-design/components/Menu/MenuItem";
 import Menu from "./apple-design/components/Menu/Menu";
 import Label from "./apple-design/components/Label/Label";
 import Toggle from "./apple-design/components/Toggle/Toggle";
+import { LoginPage } from "./pages/navbar-subpages/login/LoginPage";
+import RegisterPage from "./pages/navbar-subpages/register/RegisterPage";
 
 function App() {
     const ref = useRef();
@@ -52,13 +54,8 @@ function App() {
                     </div>
                 </nav>
                 <main id="main">
-                    <div id="content">
-                        <div className="scrollable">
-                            <Label label="Cyfrowoszkoly">
-                                <Toggle value={toggle} onChange={setToggle} />
-                            </Label>
-                        </div>
-                    </div>
+                    {/* <LoginPage /> */}
+                    <RegisterPage />
                 </main>
             </div>
         </>

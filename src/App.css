@@ -33,11 +33,32 @@
 
     --fill-tertiary: rgba(235, 235, 245, 0.2);
 
-    --background-vibrant-color: rgba(37, 37, 37, 0.82);
+    --background-color: color-mix(
+        in srgb,
+        rgba(37, 37, 37, 0.9) 90%,
+        rgba(124, 124, 124, 1)
+    );
+    --background-vibrant-color: color-mix(
+        in srgb,
+        rgba(37, 37, 37, 0.7) 90%,
+        rgba(140, 140, 140, 1)
+    );
+    --background-thin-color: color-mix(
+        in srgb,
+        rgba(37, 37, 37, 0.55) 90%,
+        rgba(156, 156, 156, 1)
+    );
+    --background-ultrathin-color: color-mix(
+        in srgb,
+        rgba(37, 37, 37, 0.55) 90%,
+        rgba(156, 156, 156, 1)
+    );
 
-    --error-color: #ff0000;
+    --error-color: #ff453a;
+    --error-transparent-color: rgba(255, 69, 58, 0.24);
 
-    --border-color: rgb(135, 135, 135, 0.24);
+    --border-color: rgb(135, 135, 135, 0.7);
+    --border-color-light: rgb(255, 255, 255, 0.6);
 
     --green-color: #30d158;
 }
@@ -49,7 +70,8 @@
     padding: 8px 12px;
 
     /* background-color: rgba(0, 0, 0, 0.3); */
-    background-color: var(--background-vibrant-color);
+    /* background-blend-mode: multiply; */
+    background-color: var(--background-color);
     backdrop-filter: blur(50px);
 
     /* background-color: grey; */
@@ -83,13 +105,13 @@
     overflow: hidden;
 }
 
-#content {
+.navbar-subpage {
     display: flex;
     flex-direction: column;
 
     /* flex: 1; */
 
-    background-color: var(--background-vibrant-color);
+    background-color: var(--background-color);
     backdrop-filter: blur(50px);
 
     max-width: 500px;
