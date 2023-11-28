@@ -124,6 +124,8 @@
     display: flex;
     flex-direction: column;
     gap: 2px;
+
+    cursor: text;
 }
 
 .input-top-label {

@@ -13,10 +13,10 @@ const TextInput = ({
     containerFocusType = "glow",
     ...props
 }: TextInputProps) => {
-    const ref = useRef();
+    const ref = useRef<HTMLInputElement>(null);
 
     return (
-        <div className="input-box">
+        <div className="input-box" onClick={() => ref.current?.focus()}>
             {topLabel && <span className="input-top-label">{topLabel}</span>}
             <div
                 className={`input-container ${
@@ -35,6 +35,7 @@ const TextInput = ({
                             }
                             props.onChange?.(e);
                         }}
+                        ref={ref}
                     />
                     <span className="input-label">{label}</span>
                 </div>

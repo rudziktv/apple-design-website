@@ -38,7 +38,21 @@ const RegisterPage = () => {
                 <span className="screen-title">Register your account</span>
                 <span
                     style={{
-                        fontSize: "1.1rem",
+                        // fontSize: "1rem",
+                        fontFamily: "SF Pro Text",
+                        textAlign: "left",
+                    }}
+                >
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Debitis minus culpa nostrum, quam consequuntur optio quas
+                    harum porro, quae modi voluptatibus quisquam! Eum, magni.
+                    Nemo laboriosam exercitationem ipsum aliquid numquam?
+                </span>
+                <span
+                    style={{
+                        // fontSize: "1.1rem",
+                        // fontFamily: "SF Pro Text",
+                        textAlign: "left",
                     }}
                 >
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -66,7 +80,20 @@ const RegisterPage = () => {
                     onTextChange={setPasswordRepeat}
                 />
 
-                <Checkbox value={eula} onChange={setEula} />
+                <div
+                    style={{
+                        display: "flex",
+                        // justifyContent: "space-between",
+                        justifyContent: "flex-start",
+                        alignItems: "center",
+                        gap: "0.5rem",
+                    }}
+                >
+                    <Checkbox value={eula} onChange={setEula} />
+                    <span>
+                        I agree to the <a href="">terms</a>
+                    </span>
+                </div>
 
                 <div
                     style={{
