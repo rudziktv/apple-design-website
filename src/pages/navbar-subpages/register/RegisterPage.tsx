@@ -10,6 +10,8 @@ const RegisterPage = () => {
     const [password, setPassword] = useState("");
     const [passwordRepeat, setPasswordRepeat] = useState("");
 
+    const [eula, setEula] = useState(false);
+
     const [email, setEmail] = useFormField("", (value, setValue) => {
         setValue(value);
 
@@ -34,6 +36,16 @@ const RegisterPage = () => {
                 }}
             >
                 <span className="screen-title">Register your account</span>
+                <span
+                    style={{
+                        fontSize: "1.1rem",
+                    }}
+                >
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Debitis minus culpa nostrum, quam consequuntur optio quas
+                    harum porro, quae modi voluptatibus quisquam! Eum, magni.
+                    Nemo laboriosam exercitationem ipsum aliquid numquam?
+                </span>
                 <TextInput
                     label="Email"
                     placeholder="example@domain.com"
@@ -54,7 +66,7 @@ const RegisterPage = () => {
                     onTextChange={setPasswordRepeat}
                 />
 
-                <Checkbox />
+                <Checkbox value={eula} onChange={setEula} />
 
                 <div
                     style={{

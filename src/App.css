@@ -38,6 +38,7 @@
         rgba(37, 37, 37, 0.9) 90%,
         rgba(124, 124, 124, 1)
     );
+    /* --background-color: black; */
     --background-vibrant-color: color-mix(
         in srgb,
         rgba(37, 37, 37, 0.7) 90%,
