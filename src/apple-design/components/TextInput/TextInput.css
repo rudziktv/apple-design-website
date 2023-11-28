@@ -43,11 +43,6 @@
     transition: 0.15s linear;
 }
 
-/* .input-main:has(.input-input:focus) {
-    width: calc(100% - 1em - 2px);
-    left: calc(0.5em - 1px);
-} */
-
 .input-input {
     border: none;
     outline: none;
@@ -58,7 +53,7 @@
 
     z-index: 1;
 
-    font-family: "SF Pro Display", sans-serif;
+    font-family: "SF Pro Text", sans-serif;
     font-size: 16px;
 
     transition: 0.15s ease-in-out;
@@ -76,6 +71,7 @@
 .input-label {
     position: absolute;
     left: 0;
+    /* font-weight: 400; */
 
     color: var(--border-color-light);
 
@@ -86,7 +82,7 @@
 .input-input:not(:placeholder-shown) ~ .input-label {
     /* color: var(--primary-color); */
     transform: translateY(-0.8em);
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .input-input::placeholder {
