@@ -3,6 +3,7 @@ import Button from "../../../apple-design/components/Buttons/Button";
 import TextInput from "../../../apple-design/components/TextInput/TextInput";
 import useFormField from "../../../hooks/useFieldForm";
 import { CheckEmail } from "../../../security/validation/EmailValidation";
+import Checkbox from "../../../apple-design/components/Checkbox/Checkbox";
 
 const RegisterPage = () => {
     // const [email, setEmail] = useState("");
@@ -32,12 +33,10 @@ const RegisterPage = () => {
                     padding: "1rem",
                 }}
             >
+                <span className="screen-title">Register your account</span>
                 <TextInput
                     label="Email"
-                    classNameContainer="glow"
-                    // topLabel="Your new Apple ID."
                     placeholder="example@domain.com"
-                    // supportingText="This email will be used to sign in."
                     error={CheckEmail(email, true)}
                     value={email}
                     onTextChange={setEmail}
@@ -45,15 +44,17 @@ const RegisterPage = () => {
                 <TextInput
                     label="Password"
                     type="password"
-                    classNameContainer="outlined"
-                    // error="Please enter a valid password."
+                    value={password}
+                    onTextChange={setPassword}
                 />
                 <TextInput
                     label="Repeat password"
                     type="password"
-                    // error="Passwords does not match."
-                    classNameContainer="focus-outline"
+                    value={passwordRepeat}
+                    onTextChange={setPasswordRepeat}
                 />
+
+                <Checkbox />
 
                 <div
                     style={{

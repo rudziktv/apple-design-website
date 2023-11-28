@@ -10,6 +10,7 @@ const TextInput = ({
     topLabel,
     supportingText,
     error,
+    containerFocusType = "glow",
     ...props
 }: TextInputProps) => {
     const ref = useRef();
@@ -20,7 +21,7 @@ const TextInput = ({
             <div
                 className={`input-container ${
                     error && "input-error"
-                } ${classNameContainer}`}
+                } ${classNameContainer} ${containerFocusType}`}
             >
                 <div className="input-main">
                     <input
@@ -58,6 +59,7 @@ export interface TextInputProps
     label?: string;
     onTextChange?: (text: string) => void;
     classNameContainer?: string;
+    containerFocusType?: "glow" | "outlined" | "thick";
 }
 
 export default TextInput;

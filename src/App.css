@@ -77,6 +77,13 @@
     /* background-color: grey; */
 }
 
+.screen-title {
+    font-weight: bold;
+    font-size: 18px;
+    text-indent: 0.5em;
+    text-align: left;
+}
+
 #navbar-logo {
     font-weight: bold;
     font-size: 28px;

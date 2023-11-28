@@ -99,7 +99,7 @@
     border-color: var(--primary-color);
 }
 
-.input-container.focus-outline:has(.input-input:focus) {
+.input-container.thick:has(.input-input:focus) {
     outline-color: var(--primary-color);
     outline-width: 1px;
 }
