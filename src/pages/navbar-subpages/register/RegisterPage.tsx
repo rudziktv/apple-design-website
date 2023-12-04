@@ -7,6 +7,7 @@ import Checkbox from "../../../apple-design/components/Checkbox/Checkbox";
 import { CheckPassword } from "../../../security/validation/PasswordValidation";
 import { useNavigate } from "react-router-dom";
 import { transitionSlide } from "../../../apple-design/animation/page-transition";
+import supabase from "../../../supabase/supabase-client";
 
 const RegisterPage = () => {
     // const [email, setEmail] = useState("");
@@ -36,6 +37,27 @@ const RegisterPage = () => {
         // // console.log("name", validForm.exec(value));
     });
 
+    const trySignUp = async () => {
+        if (signUpDisallowed) {
+            return;
+        }
+
+        const { error } = await supabase.auth.signUp({
+            email,
+            password,
+        });
+
+        if (error) {
+            alert(error.message);
+        }
+    };
+
+    const signUpDisallowed =
+        !eula ||
+        password !== passwordRepeat ||
+        !!CheckEmail(email) ||
+        !!CheckPassword(password);
+
     return transitionSlide(
         <div
             className="navbar-subpage"
@@ -64,7 +86,7 @@ const RegisterPage = () => {
                     type="password"
                     value={password}
                     onTextChange={setPassword}
-                    error={CheckPassword(password)}
+                    error={CheckPassword(password, true)}
                 />
                 <TextInput
                     label="Repeat password"
@@ -84,7 +106,7 @@ const RegisterPage = () => {
                 >
                     <Checkbox value={eula} onChange={setEula} />
                     <span>
-                        I agree to the <a href="">terms</a>
+                        I agree to the <a>terms</a>
                     </span>
                 </div>
 
@@ -103,9 +125,11 @@ const RegisterPage = () => {
                         onClick={() => navigate("/authorize/")}
                     />
                     <Button
+                        disabled={signUpDisallowed}
                         title="Sign Up"
                         buttonType="primary"
                         leadingIcon={<i className="ri-edit-2-line" />}
+                        onClick={trySignUp}
                     />
                 </div>
             </div>

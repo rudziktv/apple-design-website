@@ -17,6 +17,8 @@
     cursor: pointer;
     position: relative;
     overflow: hidden;
+
+    transition: 0.15s;
 }
 
 .button::after {
@@ -125,4 +127,15 @@
     width: 28px;
     height: 28px;
     border-radius: 14px;
+}
+
+.button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+
+    background-color: var(--border-color);
+}
+
+.button:disabled::after {
+    opacity: 0;
 }
