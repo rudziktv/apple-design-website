@@ -106,7 +106,7 @@ const RegisterPage = () => {
                 >
                     <Checkbox value={eula} onChange={setEula} />
                     <span>
-                        I agree to the <a>terms</a>
+                        I agree to the <a>terms of use</a>
                     </span>
                 </div>
 
