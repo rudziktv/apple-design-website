@@ -26,7 +26,7 @@ p {
     text-align: left;
 }
 
-.text {
+.paragraph {
     font-family: "SF Pro Text", sans-serif;
     word-spacing: -0.1rem;
     letter-spacing: -0.01rem;
@@ -75,6 +75,7 @@ p {
 
     --border-color: rgb(135, 135, 135, 0.7);
     --border-color-light: rgb(255, 255, 255, 0.6);
+    --border-color-vibrant: rgb(135, 135, 135, 0.3);
 
     --green-color: #30d158;
 }

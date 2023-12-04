@@ -1,18 +1,13 @@
-import { useRef, useState } from "react";
 import "./App.css";
 import "remixicon/fonts/remixicon.css";
+import { Outlet, useNavigate } from "react-router-dom";
 import Button from "./apple-design/components/Buttons/Button";
-import MenuItem from "./apple-design/components/Menu/MenuItem";
-import Menu from "./apple-design/components/Menu/Menu";
-import Label from "./apple-design/components/Label/Label";
-import Toggle from "./apple-design/components/Toggle/Toggle";
-import { LoginPage } from "./pages/navbar-subpages/login/LoginPage";
-import RegisterPage from "./pages/navbar-subpages/register/RegisterPage";
+import HomeDropdown from "./components/HomeDropdown";
+import useAuth from "./hooks/useAuth";
 
 function App() {
-    const ref = useRef();
-
-    const [toggle, setToggle] = useState(false);
+    const auth = useAuth();
+    const navigate = useNavigate();
 
     return (
         <>
@@ -22,40 +17,19 @@ function App() {
                     <div id="navbar-actions">
                         <Button title="About" buttonType="text" />
                         <Button title="Recruitment" buttonType="text" />
-                        <Button title="Log In" buttonType="primary" />
-                        <Menu
-                            options={[
-                                {
-                                    title: "Application",
-                                    icon: <i className="ri-list-check" />,
-                                },
-                                {
-                                    title: "Account",
-                                    icon: <i className="ri-user-line" />,
-                                },
-                                {
-                                    title: "Log Out",
-                                    icon: (
-                                        <i className="ri-logout-box-r-line" />
-                                    ),
-                                    color: "red",
-                                },
-                            ]}
-                        >
+                        {auth ? (
+                            <HomeDropdown />
+                        ) : (
                             <Button
-                                title="Account"
-                                id="account"
+                                title="Log In"
                                 buttonType="primary"
-                                trailingIcon={
-                                    <i className="ri-arrow-down-s-fill"></i>
-                                }
+                                onClick={() => navigate("/authorize/")}
                             />
-                        </Menu>
+                        )}
                     </div>
                 </nav>
                 <main id="main">
-                    {/* <LoginPage /> */}
-                    <RegisterPage />
+                    <Outlet />
                 </main>
             </div>
         </>

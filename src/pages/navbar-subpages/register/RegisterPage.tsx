@@ -38,7 +38,7 @@ const RegisterPage = () => {
             >
                 <span className="screen-title">Register your account</span>
                 <span
-                    className="text"
+                    className="paragraph"
                     style={{
                         textAlign: "left",
                     }}

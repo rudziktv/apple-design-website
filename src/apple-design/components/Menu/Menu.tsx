@@ -26,15 +26,13 @@ const Menu = ({ children, options }: MenuProps) => {
                     }}
                 >
                     {options.map((option, index) => (
-                        <>
-                            {index > 0 && (
-                                <hr
-                                    className="menu-item-divider"
-                                    key={index + "divider"}
-                                />
-                            )}
-                            <MenuItem key={index} {...option} />
-                        </>
+                        // <>
+                        // <hr
+                        //     className="menu-item-divider"
+                        //     key={Math.sqrt(index)}
+                        // />
+                        // </>
+                        <MenuItem {...option} key={index} />
                     ))}
                 </div>
             </div>
