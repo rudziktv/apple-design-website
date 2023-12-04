@@ -16,9 +16,10 @@ const TextInput = ({
     const ref = useRef<HTMLInputElement>(null);
 
     return (
-        <div className="input-box" onClick={() => ref.current?.focus()}>
+        <div className="input-box">
             {topLabel && <span className="input-top-label">{topLabel}</span>}
             <div
+                onClick={() => ref.current?.focus()}
                 className={`input-container ${
                     error && "input-error"
                 } ${classNameContainer} ${containerFocusType}`}

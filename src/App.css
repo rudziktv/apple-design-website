@@ -17,6 +17,21 @@
     /* backdrop-filter: blur(8px); */
 }
 
+p {
+    margin: 0;
+    padding: 0;
+    font-family: "SF Pro Text", sans-serif;
+    word-spacing: -0.1rem;
+    letter-spacing: -0.01rem;
+    text-align: left;
+}
+
+.text {
+    font-family: "SF Pro Text", sans-serif;
+    word-spacing: -0.1rem;
+    letter-spacing: -0.01rem;
+}
+
 #app {
     width: 100vw;
     height: 100vh;

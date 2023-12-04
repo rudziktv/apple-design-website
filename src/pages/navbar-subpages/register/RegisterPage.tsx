@@ -4,6 +4,7 @@ import TextInput from "../../../apple-design/components/TextInput/TextInput";
 import useFormField from "../../../hooks/useFieldForm";
 import { CheckEmail } from "../../../security/validation/EmailValidation";
 import Checkbox from "../../../apple-design/components/Checkbox/Checkbox";
+import { CheckPassword } from "../../../security/validation/PasswordValidation";
 
 const RegisterPage = () => {
     // const [email, setEmail] = useState("");
@@ -37,9 +38,8 @@ const RegisterPage = () => {
             >
                 <span className="screen-title">Register your account</span>
                 <span
+                    className="text"
                     style={{
-                        // fontSize: "1rem",
-                        fontFamily: "SF Pro Text",
                         textAlign: "left",
                     }}
                 >
@@ -48,18 +48,12 @@ const RegisterPage = () => {
                     harum porro, quae modi voluptatibus quisquam! Eum, magni.
                     Nemo laboriosam exercitationem ipsum aliquid numquam?
                 </span>
-                <span
-                    style={{
-                        // fontSize: "1.1rem",
-                        // fontFamily: "SF Pro Text",
-                        textAlign: "left",
-                    }}
-                >
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Debitis minus culpa nostrum, quam consequuntur optio quas
-                    harum porro, quae modi voluptatibus quisquam! Eum, magni.
-                    Nemo laboriosam exercitationem ipsum aliquid numquam?
-                </span>
+                <p>
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    Laborum repellendus cupiditate explicabo quibusdam alias
+                    provident illum fuga totam vel voluptates eos nobis, tempora
+                    esse temporibus possimus corporis hic animi quas.
+                </p>
                 <TextInput
                     label="Email"
                     placeholder="example@domain.com"
@@ -72,6 +66,7 @@ const RegisterPage = () => {
                     type="password"
                     value={password}
                     onTextChange={setPassword}
+                    error={CheckPassword(password)}
                 />
                 <TextInput
                     label="Repeat password"
