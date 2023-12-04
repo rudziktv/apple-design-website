@@ -19,21 +19,31 @@ const RegisterPage = () => {
     const [eula, setEula] = useState(false);
 
     const [email, setEmail] = useFormField("", (value, setValue) => {
+        const forbidden = new RegExp("([^a-zA-Z0-9\\_\\-\\.\\@])");
+        if (forbidden.test(value)) {
+            return;
+        }
         setValue(value);
 
-        const validTopLevelDomain = new RegExp(
-            "([a-zA-Z0-9\\_\\-\\.]+)@([a-zA-Z]+)\\.(.+[^.]$)"
-        );
-        const validDomain = new RegExp("([a-zA-Z0-9\\_\\-\\.]+)@([a-zA-Z]+)");
-        const validForm = new RegExp("([a-zA-Z0-9\\_\\-\\.]+)@");
+        // const validTopLevelDomain = new RegExp(
+        //     "([a-zA-Z0-9\\_\\-\\.]+)@([a-zA-Z]+)\\.(.+[^.]$)"
+        // );
+        // const validDomain = new RegExp("([a-zA-Z0-9\\_\\-\\.]+)@([a-zA-Z]+)");
+        // const validForm = new RegExp("([a-zA-Z0-9\\_\\-\\.]+)@");
 
-        // console.log("full-split", validTopLevelDomain.exec(value));
-        // console.log("domain", validDomain.exec(value));
-        // console.log("name", validForm.exec(value));
+        // // console.log("full-split", validTopLevelDomain.exec(value));
+        // // console.log("domain", validDomain.exec(value));
+        // // console.log("name", validForm.exec(value));
     });
 
     return transitionSlide(
-        <div className="navbar-subpage">
+        <div
+            className="navbar-subpage"
+            style={{
+                width: "100%",
+                maxWidth: "400px",
+            }}
+        >
             <div
                 className="scrollable"
                 style={{
@@ -42,23 +52,6 @@ const RegisterPage = () => {
                 }}
             >
                 <span className="screen-title">Register your account</span>
-                <span
-                    className="paragraph"
-                    style={{
-                        textAlign: "left",
-                    }}
-                >
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Debitis minus culpa nostrum, quam consequuntur optio quas
-                    harum porro, quae modi voluptatibus quisquam! Eum, magni.
-                    Nemo laboriosam exercitationem ipsum aliquid numquam?
-                </span>
-                <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Laborum repellendus cupiditate explicabo quibusdam alias
-                    provident illum fuga totam vel voluptates eos nobis, tempora
-                    esse temporibus possimus corporis hic animi quas.
-                </p>
                 <TextInput
                     label="Email"
                     placeholder="example@domain.com"

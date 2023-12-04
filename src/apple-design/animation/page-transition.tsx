@@ -4,6 +4,12 @@ const transitionSlide = (
     content: React.ReactNode,
     slide?: "left" | "right"
 ) => {
+    const spring = {
+        type: "spring",
+        damping: 35,
+        stiffness: 600,
+    };
+
     return (
         <motion.div
             initial={{
@@ -19,8 +25,13 @@ const transitionSlide = (
                     slide == "right" ? `translateX(-100%)` : `translateX(100%)`,
                 scale: 0,
             }}
-            transition={{
-                ease: "backOut",
+            transition={spring}
+            style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                width: "100%",
+                height: "100%",
             }}
         >
             {content}

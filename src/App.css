@@ -44,7 +44,10 @@ p {
 
 * {
     --primary-color: #0a84ff;
-    --primary-transparent-color: rgba(10, 132, 255, 0.24);
+    --primary-transparent-color: rgba(10, 132, 255, 0.12);
+
+    --secondary-color: #bf5af2;
+    --secondary-transparent-color: rgba(191, 90, 242, 0.12);
 
     --fill-tertiary: rgba(235, 235, 245, 0.2);
 
