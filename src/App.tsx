@@ -4,6 +4,7 @@ import { Outlet, useNavigate } from "react-router-dom";
 import Button from "./apple-design/components/Buttons/Button";
 import HomeDropdown from "./components/HomeDropdown";
 import useAuth from "./hooks/useAuth";
+import { AnimatePresence } from "framer-motion";
 
 function App() {
     const auth = useAuth();
@@ -28,9 +29,11 @@ function App() {
                         )}
                     </div>
                 </nav>
-                <main id="main">
-                    <Outlet />
-                </main>
+                <AnimatePresence mode="wait">
+                    <main id="main">
+                        <Outlet />
+                    </main>
+                </AnimatePresence>
             </div>
         </>
     );

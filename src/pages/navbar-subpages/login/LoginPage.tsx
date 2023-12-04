@@ -1,8 +1,12 @@
+import { useNavigate } from "react-router-dom";
+import { transitionSlide } from "../../../apple-design/animation/page-transition";
 import Button from "../../../apple-design/components/Buttons/Button";
 import TextInput from "../../../apple-design/components/TextInput/TextInput";
 
-export function LoginPage() {
-    return (
+const LoginPage = () => {
+    const navigate = useNavigate();
+
+    return transitionSlide(
         <div className="navbar-subpage">
             <div
                 className="scrollable"
@@ -25,6 +29,7 @@ export function LoginPage() {
                         title="Create account"
                         buttonType="text"
                         leadingIcon={<i className="ri-user-add-line" />}
+                        onClick={() => navigate("/signup/")}
                     />
                     <Button
                         title="Sign In"
@@ -35,4 +40,6 @@ export function LoginPage() {
             </div>
         </div>
     );
-}
+};
+
+export default LoginPage;

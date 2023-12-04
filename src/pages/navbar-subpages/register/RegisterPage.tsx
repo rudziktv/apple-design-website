@@ -5,9 +5,14 @@ import useFormField from "../../../hooks/useFieldForm";
 import { CheckEmail } from "../../../security/validation/EmailValidation";
 import Checkbox from "../../../apple-design/components/Checkbox/Checkbox";
 import { CheckPassword } from "../../../security/validation/PasswordValidation";
+import { useNavigate } from "react-router-dom";
+import { transitionSlide } from "../../../apple-design/animation/page-transition";
 
 const RegisterPage = () => {
     // const [email, setEmail] = useState("");
+
+    const navigate = useNavigate();
+
     const [password, setPassword] = useState("");
     const [passwordRepeat, setPasswordRepeat] = useState("");
 
@@ -27,7 +32,7 @@ const RegisterPage = () => {
         // console.log("name", validForm.exec(value));
     });
 
-    return (
+    return transitionSlide(
         <div className="navbar-subpage">
             <div
                 className="scrollable"
@@ -102,6 +107,7 @@ const RegisterPage = () => {
                         title="Back"
                         buttonType="text"
                         leadingIcon={<i className="ri-arrow-left-s-line" />}
+                        onClick={() => navigate("/authorize/")}
                     />
                     <Button
                         title="Sign Up"
@@ -110,7 +116,8 @@ const RegisterPage = () => {
                     />
                 </div>
             </div>
-        </div>
+        </div>,
+        "right"
     );
 };
 
