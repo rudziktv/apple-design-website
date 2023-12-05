@@ -6,12 +6,14 @@ import RecruitmentPage from "../pages/navbar-subpages/recruitment/RecruitmentPag
 import FormPage from "../pages/navbar-subpages/form/FormPage";
 import {
     ACCOUNT_PAGE_ALIAS,
+    FORM_CONFIG_PAGE_ALIAS,
     FORM_PAGE_ALIAS,
     LOGIN_PAGE_ALIAS,
     RECRUITMENT_PAGE_ALIAS,
     REGISTER_PAGE_ALIAS,
 } from "./aliases";
 import AccountPage from "../pages/navbar-subpages/account/AccountPage";
+import FormConfigPage from "../pages/navbar-subpages/form/FormConfigPage";
 
 const router = createBrowserRouter([
     {
@@ -37,6 +39,10 @@ const router = createBrowserRouter([
             {
                 path: ACCOUNT_PAGE_ALIAS,
                 element: <AccountPage />,
+            },
+            {
+                path: FORM_CONFIG_PAGE_ALIAS,
+                element: <FormConfigPage />,
             },
         ],
     },

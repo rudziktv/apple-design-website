@@ -2,15 +2,16 @@ import { useNavigate } from "react-router-dom";
 import { transitionSlide } from "../../../apple-design/animation/page-transition";
 import Button from "../../../apple-design/components/Buttons/Button";
 import TextInput from "../../../apple-design/components/TextInput/TextInput";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import supabase from "../../../supabase/supabase-client";
-import Alert from "../../../apple-design/components/Alert/Alert";
 import useAlert from "../../../hooks/useAlert";
 import { CheckPassword } from "../../../security/validation/PasswordValidation";
 import { CheckEmail } from "../../../security/validation/EmailValidation";
+import { useStoredAuth } from "../../../hooks/useStoredAuth";
 
 const LoginPage = () => {
     const navigate = useNavigate();
+    const auth = useStoredAuth();
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -30,6 +31,12 @@ const LoginPage = () => {
         }
     };
 
+    useEffect(() => {
+        if (auth) {
+            navigate("/");
+        }
+    }, [auth]);
+
     const forgot = useAlert("Forgot password?", "Skill issue", (setVisible) => [
         {
             title: "OK",
@@ -46,11 +53,6 @@ const LoginPage = () => {
     ]);
 
     const loginDisallowed = !!CheckPassword(password) || !!CheckEmail(email);
-
-    // const forgot = () => {
-
-    //     a(true);
-    // };
 
     return transitionSlide(
         <div className="navbar-subpage">

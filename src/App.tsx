@@ -9,6 +9,7 @@ import Alert from "./apple-design/components/Alert/Alert";
 import AlertContext from "./apple-design/components/Alert/AlertContext";
 import { useState } from "react";
 import { AlertActionProps } from "./apple-design/components/Alert/AlertAction";
+import { StoredAuthContext } from "./hooks/useStoredAuth";
 
 function App() {
     const auth = useAuth();
@@ -30,43 +31,45 @@ function App() {
                     alertSetActions: setAlertActions,
                 }}
             >
-                <div id="app">
-                    <AnimatePresence>
-                        {alertVisible && (
-                            <Alert
-                                message={alertMessage}
-                                title={alertTitle}
-                                actions={alertActions}
-                            />
-                        )}
-                    </AnimatePresence>
-
-                    <nav id="navbar">
-                        <div id="navbar-logo">Cyfroweszkoly</div>
-                        <div id="navbar-actions">
-                            <Button title="About" buttonType="text" />
-                            <Button
-                                title="Recruitment"
-                                onClick={() => navigate("/recruitment/")}
-                                buttonType="text"
-                            />
-                            {auth ? (
-                                <HomeDropdown />
-                            ) : (
-                                <Button
-                                    title="Log In"
-                                    buttonType="primary"
-                                    onClick={() => navigate("/authorize/")}
+                <StoredAuthContext.Provider value={{ authorized: auth }}>
+                    <div id="app">
+                        <AnimatePresence>
+                            {alertVisible && (
+                                <Alert
+                                    message={alertMessage}
+                                    title={alertTitle}
+                                    actions={alertActions}
                                 />
                             )}
-                        </div>
-                    </nav>
-                    <AnimatePresence mode="wait">
-                        <main id="main">
-                            <Outlet />
-                        </main>
-                    </AnimatePresence>
-                </div>
+                        </AnimatePresence>
+
+                        <nav id="navbar">
+                            <div id="navbar-logo">Cyfroweszkoly</div>
+                            <div id="navbar-actions">
+                                <Button title="About" buttonType="text" />
+                                <Button
+                                    title="Recruitment"
+                                    onClick={() => navigate("/recruitment/")}
+                                    buttonType="text"
+                                />
+                                {auth ? (
+                                    <HomeDropdown />
+                                ) : (
+                                    <Button
+                                        title="Log In"
+                                        buttonType="primary"
+                                        onClick={() => navigate("/authorize/")}
+                                    />
+                                )}
+                            </div>
+                        </nav>
+                        <AnimatePresence mode="wait">
+                            <main id="main">
+                                <Outlet />
+                            </main>
+                        </AnimatePresence>
+                    </div>
+                </StoredAuthContext.Provider>
             </AlertContext.Provider>
         </>
     );

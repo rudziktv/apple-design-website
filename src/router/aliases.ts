@@ -3,6 +3,7 @@ const REGISTER_PAGE_ALIAS = "signup";
 const RECRUITMENT_PAGE_ALIAS = "recruitment";
 const FORM_PAGE_ALIAS = "form";
 const ACCOUNT_PAGE_ALIAS = "account";
+const FORM_CONFIG_PAGE_ALIAS = "form/:schoolId/:page";
 
 export {
     LOGIN_PAGE_ALIAS,
@@ -10,4 +11,5 @@ export {
     RECRUITMENT_PAGE_ALIAS,
     FORM_PAGE_ALIAS,
     ACCOUNT_PAGE_ALIAS,
+    FORM_CONFIG_PAGE_ALIAS,
 };

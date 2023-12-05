@@ -1,10 +1,10 @@
 import { useEffect } from "react";
-import useAuth from "../../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import { useStoredAuth } from "../../../hooks/useStoredAuth";
 import { LOGIN_PAGE_LINK } from "../../../router/links";
 
 const AccountPage = () => {
-    const auth = useAuth();
+    const auth = useStoredAuth();
     const navigate = useNavigate();
 
     useEffect(() => {

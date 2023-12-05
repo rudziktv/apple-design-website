@@ -152,6 +152,7 @@ p {
     border-radius: 1em;
 
     overflow: hidden;
+    pointer-events: all;
     /* position: absolute;
     z-index: 9999; */
 }

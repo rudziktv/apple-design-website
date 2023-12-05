@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../../../apple-design/components/Buttons/Button";
 import TextInput from "../../../apple-design/components/TextInput/TextInput";
 import useFormField from "../../../hooks/useFieldForm";
@@ -9,9 +9,12 @@ import { useNavigate } from "react-router-dom";
 import { transitionSlide } from "../../../apple-design/animation/page-transition";
 import supabase from "../../../supabase/supabase-client";
 import useAlert from "../../../hooks/useAlert";
+import { useStoredAuth } from "../../../hooks/useStoredAuth";
 
 const RegisterPage = () => {
     // const [email, setEmail] = useState("");
+
+    const auth = useStoredAuth();
 
     const navigate = useNavigate();
 
@@ -37,6 +40,12 @@ const RegisterPage = () => {
         // // console.log("domain", validDomain.exec(value));
         // // console.log("name", validForm.exec(value));
     });
+
+    useEffect(() => {
+        if (auth) {
+            navigate("/");
+        }
+    }, [auth]);
 
     const errorAlert = useAlert("Error", "", (setVisible) => [
         {

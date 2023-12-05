@@ -24,8 +24,8 @@ const HomeDropdown = () => {
                     icon: <i className="ri-logout-box-r-line" />,
                     color: "red",
                     onClick: async () => {
-                        navigate(LOGIN_PAGE_LINK);
                         await supabase.auth.signOut();
+                        // navigate(LOGIN_PAGE_LINK);
                     },
                 },
             ]}

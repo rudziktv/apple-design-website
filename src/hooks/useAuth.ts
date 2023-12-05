@@ -5,7 +5,7 @@ import supabase from "../supabase/supabase-client";
  * useAuth hook returns if user is authorized or not
  * @returns {boolean}
  */
-const useAuth = () => {
+const useAuth = (): boolean => {
     const [authorized, setAuthorized] = useState(false);
 
     useEffect(() => {
