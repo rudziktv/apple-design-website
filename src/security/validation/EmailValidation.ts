@@ -18,7 +18,7 @@ const CheckEmail = (value: string, igonreEmpty?: boolean) => {
     }
 
     if (!validForm) {
-        return "Email must contain @";
+        return "Email must contain '@'";
     } else if (!validDomain) {
         return "Email must contain valid domain";
     } else if (!validTopLevelDomain.test(value)) {

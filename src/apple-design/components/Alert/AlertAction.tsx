@@ -7,6 +7,7 @@ const AlertAction = ({
 }: AlertActionProps) => {
     return (
         <button
+            onClick={onClick}
             className="alert-action"
             style={{
                 color: `var(${
@@ -14,14 +15,14 @@ const AlertAction = ({
                 })`,
             }}
         >
-            Action
+            {title}
         </button>
     );
 };
 
 export interface AlertActionProps {
     title?: string;
-    onClick?: () => void;
+    onClick?: React.MouseEventHandler<HTMLButtonElement>;
     color?: "primary" | "error";
 }
 

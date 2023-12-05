@@ -1,7 +1,12 @@
+import { useNavigate } from "react-router-dom";
 import Button from "../apple-design/components/Buttons/Button";
 import Menu from "../apple-design/components/Menu/Menu";
+import { ACCOUNT_PAGE_LINK, LOGIN_PAGE_LINK } from "../router/links";
+import supabase from "../supabase/supabase-client";
 
 const HomeDropdown = () => {
+    const navigate = useNavigate();
+
     return (
         <Menu
             options={[
@@ -12,11 +17,16 @@ const HomeDropdown = () => {
                 {
                     title: "Account",
                     icon: <i className="ri-user-line" />,
+                    onClick: () => navigate(ACCOUNT_PAGE_LINK),
                 },
                 {
                     title: "Log Out",
                     icon: <i className="ri-logout-box-r-line" />,
                     color: "red",
+                    onClick: async () => {
+                        navigate(LOGIN_PAGE_LINK);
+                        await supabase.auth.signOut();
+                    },
                 },
             ]}
         >

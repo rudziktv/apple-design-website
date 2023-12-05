@@ -8,6 +8,7 @@ import { CheckPassword } from "../../../security/validation/PasswordValidation";
 import { useNavigate } from "react-router-dom";
 import { transitionSlide } from "../../../apple-design/animation/page-transition";
 import supabase from "../../../supabase/supabase-client";
+import useAlert from "../../../hooks/useAlert";
 
 const RegisterPage = () => {
     // const [email, setEmail] = useState("");
@@ -37,6 +38,14 @@ const RegisterPage = () => {
         // // console.log("name", validForm.exec(value));
     });
 
+    const errorAlert = useAlert("Error", "", (setVisible) => [
+        {
+            title: "OK",
+            onClick: () => setVisible(false),
+            color: "error",
+        },
+    ]);
+
     const trySignUp = async () => {
         if (signUpDisallowed) {
             return;
@@ -48,8 +57,17 @@ const RegisterPage = () => {
         });
 
         if (error) {
-            alert(error.message);
+            errorAlert(true, {
+                title: "Error",
+                message: error.message,
+            });
+            return;
+            // alert(error.message);
         }
+        errorAlert(true, {
+            title: "Success",
+            message: "Send",
+        });
     };
 
     const signUpDisallowed =
@@ -93,6 +111,11 @@ const RegisterPage = () => {
                     type="password"
                     value={passwordRepeat}
                     onTextChange={setPasswordRepeat}
+                    error={
+                        password !== passwordRepeat && !!passwordRepeat
+                            ? "Passwords don't match"
+                            : undefined
+                    }
                 />
 
                 <div

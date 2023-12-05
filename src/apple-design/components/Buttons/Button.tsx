@@ -30,7 +30,14 @@ export interface ButtonProps
     leadingIcon?: React.ReactNode;
     trailingIcon?: React.ReactNode;
 
-    buttonType?: "primary" | "semi" | "secondary" | "secondary-text" | "text";
+    buttonType?:
+        | "primary"
+        | "semi"
+        | "secondary"
+        | "secondary-text"
+        | "text"
+        | "tertiary"
+        | "tertiary-text";
     buttonSize?: "small" | "medium" | "large";
 }
 

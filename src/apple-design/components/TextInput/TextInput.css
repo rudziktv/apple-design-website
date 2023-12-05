@@ -23,12 +23,33 @@
     /* margin: 1px; */
 }
 
-.input-error,
-.input-error .input-label {
+.input-error:not(:has(.input-input:focus)),
+.input-error:not(:has(.input-input:focus)) .input-label {
+    border-color: var(--error-color) !important;
+    outline-color: var(--error-color) !important;
+    color: var(--error-color) !important;
+}
+
+.input-error-text {
+    text-align: left;
+    font-size: 0px;
+    color: var(--error-color);
+    transition: 0.2s;
+}
+
+.input-error:not(:has(.input-input:focus)) ~ .input-error-text {
+    font-size: small !important;
+}
+
+/* .glow:has(.input-input:focus).input-error {
+    box-shadow: 0 0 4px 0 var(--error-color);
+} */
+
+/* .input-error .input-label {
     border-color: var(--error-color) !important;
     color: var(--error-color) !important;
     outline-color: var(--error-color) !important;
-}
+} */
 
 .input-main {
     position: absolute;
@@ -117,10 +138,6 @@
     box-shadow: 0 0 4px 0 var(--primary-color);
 }
 
-.glow:has(.input-input:focus).input-error {
-    box-shadow: 0 0 4px 0 var(--error-color);
-}
-
 .input-box {
     display: flex;
     flex-direction: column;
@@ -136,12 +153,6 @@
     font-weight: 600;
     text-align: left;
     /* text-indent: 1em; */
-}
-
-.input-error-text {
-    text-align: left;
-    font-size: small;
-    color: var(--error-color);
 }
 
 .input-supporting-text {

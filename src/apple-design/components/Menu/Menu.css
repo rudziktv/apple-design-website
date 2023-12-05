@@ -1,5 +1,5 @@
 .menu {
-    position: relative;
+    /* position: relative; */
 }
 
 .menu-trigger {
@@ -24,7 +24,7 @@
     border-radius: 12px;
 
     background-color: var(--background-color);
-    backdrop-filter: blur(50px);
+    /* backdrop-filter: blur(50px); */
 
     scale: 0;
     opacity: 0;

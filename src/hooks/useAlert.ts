@@ -16,11 +16,31 @@ const useAlert = (
 ) => {
     const alert = useContext(AlertContext);
 
-    alert.alertSetTitle(title);
-    alert.alertSetMessage(message);
-    alert.alertSetActions(actions(alert.alertSetVisible));
-
-    return alert.alertSetVisible;
+    return (
+        visibility: boolean,
+        values?: {
+            title?: string;
+            message?: string;
+            actions?: (
+                setVisible: (value: boolean) => void
+            ) => AlertActionProps[];
+        }
+    ) => {
+        if (!!values) {
+            alert.alertSetTitle(values.title ? values.title : title);
+            alert.alertSetMessage(values.message ? values.message : message);
+            alert.alertSetActions(
+                values.actions
+                    ? values.actions(alert.alertSetVisible)
+                    : actions(alert.alertSetVisible)
+            );
+        } else {
+            alert.alertSetTitle(title);
+            alert.alertSetMessage(message);
+            alert.alertSetActions(actions(alert.alertSetVisible));
+        }
+        alert.alertSetVisible(visibility);
+    };
 };
 
 export default useAlert;

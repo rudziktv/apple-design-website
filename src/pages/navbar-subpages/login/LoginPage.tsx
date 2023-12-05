@@ -6,6 +6,8 @@ import { useState } from "react";
 import supabase from "../../../supabase/supabase-client";
 import Alert from "../../../apple-design/components/Alert/Alert";
 import useAlert from "../../../hooks/useAlert";
+import { CheckPassword } from "../../../security/validation/PasswordValidation";
+import { CheckEmail } from "../../../security/validation/EmailValidation";
 
 const LoginPage = () => {
     const navigate = useNavigate();
@@ -20,20 +22,35 @@ const LoginPage = () => {
         });
 
         if (error) {
-            alert(error.message);
+            loginAlert(true, {
+                title: "Error",
+                message: error.message,
+            });
+            // alert(error.message);
         }
     };
 
-    const forgot = () => {
-        const a = useAlert("Forgot password?", "Not implemented yet", (_) => [
-            {
-                title: "OK",
-                onClick: () => {},
-            },
-        ]);
+    const forgot = useAlert("Forgot password?", "Skill issue", (setVisible) => [
+        {
+            title: "OK",
+            onClick: () => setVisible(false),
+        },
+    ]);
 
-        a(true);
-    };
+    const loginAlert = useAlert("Error during login", "", (setVisible) => [
+        {
+            title: "OK",
+            onClick: () => setVisible(false),
+            color: "error",
+        },
+    ]);
+
+    const loginDisallowed = !!CheckPassword(password) || !!CheckEmail(email);
+
+    // const forgot = () => {
+
+    //     a(true);
+    // };
 
     return transitionSlide(
         <div className="navbar-subpage">
@@ -50,21 +67,23 @@ const LoginPage = () => {
                     type="email"
                     value={email}
                     onTextChange={setEmail}
+                    error={CheckEmail(email, true)}
                 />
                 <TextInput
                     label="Password"
                     type="password"
                     value={password}
                     onTextChange={setPassword}
+                    error={CheckPassword(password, true)}
                 />
 
                 <div>
                     <Button
                         title="Forgot password?"
                         buttonSize="small"
-                        buttonType="secondary-text"
+                        buttonType="tertiary-text"
                         leadingIcon={<i className="ri-question-line" />}
-                        onClick={forgot}
+                        onClick={() => forgot(true)}
                     />
                 </div>
 
@@ -83,6 +102,7 @@ const LoginPage = () => {
                         onClick={() => navigate("/signup/")}
                     />
                     <Button
+                        disabled={loginDisallowed}
                         title="Sign In"
                         buttonType="primary"
                         leadingIcon={<i className="ri-login-box-line" />}

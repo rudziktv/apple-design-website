@@ -13,8 +13,10 @@
     background-image: url("./assets/wallpapers/iPadOS_wallpaper.png");
     background-size: cover;
     background-blend-mode: multiply;
+    /* position: fixed; */
     /* background-color: rgba(37, 37, 37, 0.82); */
     /* backdrop-filter: blur(8px); */
+    /* z-index: -2; */
 }
 
 p {
@@ -132,6 +134,7 @@ p {
     padding: 2em;
 
     overflow: hidden;
+    /* z-index: -1; */
 }
 
 .navbar-subpage {
@@ -149,6 +152,8 @@ p {
     border-radius: 1em;
 
     overflow: hidden;
+    /* position: absolute;
+    z-index: 9999; */
 }
 
 .scrollable {

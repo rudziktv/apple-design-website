@@ -45,7 +45,11 @@ function App() {
                         <div id="navbar-logo">Cyfroweszkoly</div>
                         <div id="navbar-actions">
                             <Button title="About" buttonType="text" />
-                            <Button title="Recruitment" buttonType="text" />
+                            <Button
+                                title="Recruitment"
+                                onClick={() => navigate("/recruitment/")}
+                                buttonType="text"
+                            />
                             {auth ? (
                                 <HomeDropdown />
                             ) : (
