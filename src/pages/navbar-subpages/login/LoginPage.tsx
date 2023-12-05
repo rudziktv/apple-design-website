@@ -4,6 +4,8 @@ import Button from "../../../apple-design/components/Buttons/Button";
 import TextInput from "../../../apple-design/components/TextInput/TextInput";
 import { useState } from "react";
 import supabase from "../../../supabase/supabase-client";
+import Alert from "../../../apple-design/components/Alert/Alert";
+import useAlert from "../../../hooks/useAlert";
 
 const LoginPage = () => {
     const navigate = useNavigate();
@@ -20,6 +22,17 @@ const LoginPage = () => {
         if (error) {
             alert(error.message);
         }
+    };
+
+    const forgot = () => {
+        const a = useAlert("Forgot password?", "Not implemented yet", (_) => [
+            {
+                title: "OK",
+                onClick: () => {},
+            },
+        ]);
+
+        a(true);
     };
 
     return transitionSlide(
@@ -51,6 +64,7 @@ const LoginPage = () => {
                         buttonSize="small"
                         buttonType="secondary-text"
                         leadingIcon={<i className="ri-question-line" />}
+                        onClick={forgot}
                     />
                 </div>
 

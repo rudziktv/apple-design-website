@@ -1,0 +1,36 @@
+.alert-action {
+    border: none;
+    background-color: transparent;
+
+    /* color: var(--primary-color); */
+
+    font-size: 1.4rem;
+
+    cursor: pointer;
+
+    padding: 0.6rem 1rem;
+    overflow: hidden;
+    position: relative;
+}
+
+.alert-action::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    opacity: 0;
+
+    transition: 0.1s;
+}
+
+.alert-action:hover::after {
+    opacity: 0.08;
+}
+
+.alert-action:active::after {
+    background-color: black;
+    opacity: 0.12;
+}
