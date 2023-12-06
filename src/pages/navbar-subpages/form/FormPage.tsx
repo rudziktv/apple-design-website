@@ -21,7 +21,7 @@ const FormPage = () => {
                 </span>
 
                 <Button
-                    title="LO IX"
+                    title="LO XI"
                     onClick={() => navigate("/form/lo11/1")}
                 />
 

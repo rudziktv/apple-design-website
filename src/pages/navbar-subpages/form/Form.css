@@ -1,0 +1,32 @@
+.form-page {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+
+    width: 450px;
+
+    gap: 1rem;
+
+    padding: 0.5rem 0;
+    box-sizing: border-box;
+}
+
+.form-title-page {
+    text-align: left;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.inline-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.inline-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: space-between;
+}

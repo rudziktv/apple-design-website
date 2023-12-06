@@ -6,7 +6,7 @@ const ImageButton = () => {
         <button className="image-button">
             <img src={cyfroweszkolyLogo} />
 
-            <span>LO IX</span>
+            <span>LO XI</span>
         </button>
     );
 };

@@ -54,7 +54,7 @@ const transitionFade = (content: React.ReactNode) => {
                 scale: 0,
             }}
             transition={{
-                ease: "backOut",
+                ease: "easeInOut",
             }}
         >
             {content}

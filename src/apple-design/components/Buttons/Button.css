@@ -169,7 +169,8 @@
     opacity: 0.5;
     cursor: not-allowed;
 
-    background-color: var(--border-color);
+    color: var(--border-color-light);
+    background-color: var(--border-color-vibrant);
 }
 
 .button:disabled::after {
