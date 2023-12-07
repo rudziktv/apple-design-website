@@ -5,9 +5,12 @@ import Button from "../../../../apple-design/components/Buttons/Button";
 import useFormField from "../../../../hooks/useFieldForm";
 import { useNavigate } from "react-router-dom";
 import { transitionFade } from "../../../../apple-design/animation/page-transition";
+import Dropdown from "../../../../apple-design/components/Dropdown/Dropdown";
+import { IDropdownItem } from "../../../../apple-design/components/Dropdown/DropdownItem";
 
 const Page2 = () => {
     const [competition, setCompetition] = useState(false);
+    const [name, setName] = useState<IDropdownItem>();
 
     const navigate = useNavigate();
 
@@ -21,6 +24,17 @@ const Page2 = () => {
                 <span>Laureat przedmiotowego konkursu kuratoryjnego</span>
             </div>
             <TextInput label="Nazwa konkursu" placeholder="Work in progress" />
+            <Dropdown
+                label="Wybierz konkurs"
+                items={[
+                    { id: 1, label: "Polski" },
+                    { id: 2, label: "Matma" },
+                    { id: 2, label: "Hista" },
+                    { id: 2, label: "Niemiec" },
+                ]}
+                value={name}
+                onChange={setName}
+            />
             <div className="inline-actions">
                 <Button
                     title="Wstecz"

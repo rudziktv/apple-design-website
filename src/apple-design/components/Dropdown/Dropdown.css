@@ -1,0 +1,124 @@
+.dropdown {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    height: fit-content;
+}
+
+.dropdown-trigger {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    height: 3em;
+    min-height: 3em;
+    border-radius: 0.5em;
+
+    /* z-index: 2; */
+
+    padding: 0.5em;
+
+    box-sizing: border-box;
+
+    outline: 0px solid var(--border-color-light);
+
+    border: 2px solid;
+    border-color: var(--border-color-light);
+    color: var(--border-color-light);
+    transition: 0.15s linear;
+    cursor: pointer;
+    /* margin: 1px; */
+}
+
+.dropdown.opened > .dropdown-trigger {
+    border-color: var(--primary-color);
+}
+
+.dropdown-down-icon {
+    margin-left: auto;
+    transition: 0.15s;
+}
+
+.opened .dropdown-down-icon {
+    transform: rotate(180deg);
+}
+
+.dropdown-trigger-labels {
+    position: relative;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: flex-start;
+}
+.dropdown-label {
+    /* color: var(--border-color-light); */
+}
+
+.dropdown-items {
+    /* position: absolute; */
+    background-color: var(--background-color);
+    backdrop-filter: blur(8px);
+    /* scale: 0; */
+    width: 100%;
+    z-index: 2;
+    border-radius: 0.2rem;
+    transform: scaleY(0);
+    height: 0;
+    transition: 0.15s;
+    overflow: hidden;
+}
+
+.dropdown-items::-webkit-scrollbar {
+    width: 0.4rem;
+}
+
+.dropdown-items::-webkit-scrollbar-thumb {
+    border-radius: 0.5em;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.opened .dropdown-items {
+    transform: scaleY(1);
+    height: calc(105px);
+    overflow-y: auto;
+    /* display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center; */
+}
+
+/* .opened .dropdown-items > .dropdown-item:first-child:nth-last-child(1) {
+    height: 35px;
+}
+
+.opened .dropdown-items > .dropdown-item:first-child:nth-last-child(2) {
+    height: 75px;
+} */
+.opened .dropdown-items:has(:nth-child(1)) {
+    height: calc(35px);
+}
+
+.opened .dropdown-items:has(:nth-child(2)) {
+    height: calc(70px);
+}
+
+.opened .dropdown-items:has(:nth-child(2)) {
+    height: calc(105px);
+}
+
+.dropdown-label {
+    /* font-size: small; */
+    transition: 0.15s;
+}
+
+.dropdown-selected-label:not(:empty) ~ .dropdown-label {
+    font-size: small;
+}
+
+.dropdown-selected-label {
+    color: white;
+    transition: 0.15s;
+}
