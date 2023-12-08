@@ -3,7 +3,13 @@ import "./Dropdown.css";
 import DropdownItem, { IDropdownItem } from "./DropdownItem";
 import useOutsideAlerter from "../../../hooks/useOutsideAlerter";
 
-const Dropdown = ({ label, items, value, onChange }: DropdownProps) => {
+const Dropdown = ({
+    disabled,
+    label,
+    items,
+    value,
+    onChange,
+}: DropdownProps) => {
     const [opened, setOpened] = useState(false);
     const ref = useRef(null);
     const triggerRef = useRef(null);
@@ -18,9 +24,11 @@ const Dropdown = ({ label, items, value, onChange }: DropdownProps) => {
 
     return (
         <div
-            className={`dropdown ${opened && "opened"}`}
+            className={`dropdown ${opened && "opened"} ${
+                disabled && "disabled"
+            }`}
             ref={triggerRef}
-            onClick={() => setOpened(!opened)}
+            onClick={() => setOpened(!opened && !disabled)}
         >
             <div className="dropdown-trigger">
                 <div className="dropdown-trigger-labels">
@@ -31,13 +39,7 @@ const Dropdown = ({ label, items, value, onChange }: DropdownProps) => {
                 </div>
                 <i className="ri-arrow-down-s-line dropdown-icon dropdown-down-icon" />
             </div>
-            <div
-                ref={ref}
-                className={`dropdown-items`}
-                // style={{
-                //     height: opened ? 35 * 3 : "0px",
-                // }}
-            >
+            <div ref={ref} className={`dropdown-items`}>
                 {items?.map((item, index) => (
                     <DropdownItem
                         key={index}
@@ -55,6 +57,7 @@ export interface DropdownProps {
     items?: IDropdownItem[];
     value?: IDropdownItem;
     onChange?: (value: IDropdownItem) => void;
+    disabled?: boolean;
 }
 
 export default Dropdown;

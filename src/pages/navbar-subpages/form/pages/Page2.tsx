@@ -1,16 +1,25 @@
 import { useState } from "react";
 import Checkbox from "../../../../apple-design/components/Checkbox/Checkbox";
-import TextInput from "../../../../apple-design/components/TextInput/TextInput";
 import Button from "../../../../apple-design/components/Buttons/Button";
-import useFormField from "../../../../hooks/useFieldForm";
-import { useNavigate } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { transitionFade } from "../../../../apple-design/animation/page-transition";
 import Dropdown from "../../../../apple-design/components/Dropdown/Dropdown";
 import { IDropdownItem } from "../../../../apple-design/components/Dropdown/DropdownItem";
+import { useStoredUserField } from "../../../../hooks/useFieldForm";
+import { IFormData } from "../../../../data/data-loader/FormDataLoader";
+// import supabase from "../../../../supabase/supabase-client";
 
 const Page2 = () => {
-    const [competition, setCompetition] = useState(false);
-    const [name, setName] = useState<IDropdownItem>();
+    const loaderData = useLoaderData() as IFormData;
+
+    const [competition, setCompetition] = useStoredUserField(
+        false,
+        "competition-exist"
+    );
+    const [name, setName] = useStoredUserField<IDropdownItem>(
+        { id: 0, label: "Brak" },
+        "competition-name"
+    );
 
     const navigate = useNavigate();
 
@@ -23,17 +32,15 @@ const Page2 = () => {
                 <Checkbox value={competition} onChange={setCompetition} />
                 <span>Laureat przedmiotowego konkursu kuratoryjnego</span>
             </div>
-            <TextInput label="Nazwa konkursu" placeholder="Work in progress" />
             <Dropdown
                 label="Wybierz konkurs"
-                items={[
-                    { id: 1, label: "Polski" },
-                    { id: 2, label: "Matma" },
-                    { id: 2, label: "Hista" },
-                    { id: 2, label: "Niemiec" },
-                ]}
+                items={loaderData.competitions.map((item) => ({
+                    id: item.id,
+                    label: item.name || "Label",
+                }))}
                 value={name}
                 onChange={setName}
+                disabled={!competition}
             />
             <div className="inline-actions">
                 <Button
@@ -44,7 +51,8 @@ const Page2 = () => {
                 <Button
                     title="Dalej"
                     trailingIcon={<i className="ri-arrow-right-s-line" />}
-                    onClick={() => navigate("/form/lo11/2")}
+                    onClick={() => navigate("/form/lo11/3")}
+                    disabled={competition && !name.id}
                 />
             </div>
         </div>

@@ -3,13 +3,15 @@ import useAuthRedirect from "../../../hooks/useAuthRedirect";
 import Page1 from "./pages/Page1";
 import "./Form.css";
 import Page2 from "./pages/Page2";
+import { transitionSlide } from "../../../apple-design/animation/page-transition";
+import Page3 from "./pages/Page3";
 
 const FormConfigPage = () => {
     useAuthRedirect();
 
     const { schoolId, page } = useParams();
 
-    return (
+    return transitionSlide(
         <div className="navbar-subpage">
             <div
                 className="scrollable"
@@ -24,6 +26,7 @@ const FormConfigPage = () => {
 
                 {page === "1" && <Page1 />}
                 {page === "2" && <Page2 />}
+                {page === "3" && <Page3 />}
             </div>
         </div>
     );

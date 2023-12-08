@@ -14,6 +14,9 @@ import {
 } from "./aliases";
 import AccountPage from "../pages/navbar-subpages/account/AccountPage";
 import FormConfigPage from "../pages/navbar-subpages/form/FormConfigPage";
+import CuratorialCompetitionsLoader from "../data/data-loader/curatorial-competitions-loader";
+import FormDataLoader from "../data/data-loader/FormDataLoader";
+import Page2 from "../pages/navbar-subpages/form/pages/Page2";
 
 const router = createBrowserRouter([
     {
@@ -43,6 +46,17 @@ const router = createBrowserRouter([
             {
                 path: FORM_CONFIG_PAGE_ALIAS,
                 element: <FormConfigPage />,
+                loader: FormDataLoader,
+                children: [
+                    // {
+                    //     path: "lo11/2",
+                    //     element: <Page2 />,
+                    // },
+                    {
+                        path: ":schoolId/:page",
+                        element: <>Empty</>,
+                    },
+                ],
             },
         ],
     },
