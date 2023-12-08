@@ -29,13 +29,13 @@ const useSavedData = <T>(
     const setDataWithStorage: React.Dispatch<React.SetStateAction<T>> = (
         value: React.SetStateAction<T>
     ) => {
-        const newData = value instanceof Function ? value(data) : data;
-        setData(newData);
+        const newData = value instanceof Function ? value(data) : value;
+        setData(value);
         SaveData(key, newData);
     };
 
     // return useState<T>(LoadData<T>(key, defaultValue));
-    return [data, setData];
+    return [data, setDataWithStorage];
 };
 
 const useUserData = <T>(key: string, defaultValue?: T) => {

@@ -1,26 +1,14 @@
-import { useState } from "react";
 import Checkbox from "../../../../apple-design/components/Checkbox/Checkbox";
 import TextInput from "../../../../apple-design/components/TextInput/TextInput";
 import Button from "../../../../apple-design/components/Buttons/Button";
-import useFormField, { useStoredField } from "../../../../hooks/useFieldForm";
+import { useStoredField } from "../../../../hooks/useFieldForm";
 import { useNavigate } from "react-router-dom";
 import { transitionFade } from "../../../../apple-design/animation/page-transition";
+import { NameCallbackRegex } from "../../../../security/validation/FormRegex";
 
 const Page1 = () => {
-    const [first, setFirst] = useState(false);
-    const [school, setSchool] = useStoredField(
-        "",
-        "school",
-        (value, setValue) => {
-            const forbidden = new RegExp(
-                "([^\\-\\.\\d\\w\\sąĄśŚćĆżŻźŹóÓęĘńŃłŁ])"
-            );
-            if (forbidden.test(value)) {
-                return;
-            }
-            setValue(value);
-        }
-    );
+    const [first, setFirst] = useStoredField(false, "first-choice");
+    const [school, setSchool] = useStoredField("", "school", NameCallbackRegex);
 
     const navigate = useNavigate();
 

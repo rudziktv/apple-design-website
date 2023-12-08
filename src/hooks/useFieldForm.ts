@@ -1,9 +1,5 @@
 import React, { useState } from "react";
-import {
-    SaveData,
-    useSavedData,
-    useUserData,
-} from "../data/data-handler/DataHandler";
+import { useSavedData, useUserData } from "../data/data-handler/DataHandler";
 
 const useFormField = <T>(
     initialValue: T,
@@ -27,19 +23,41 @@ const useStoredField = <T>(
     key: string,
     callback?: (value: T, setInputValue: (value: T) => void) => void
 ): [T, React.Dispatch<React.SetStateAction<T>>] => {
-    const [value, setValue] = useSavedData(key, defaultValue);
+    const [field, setField] = useSavedData(key, defaultValue);
 
-    const onChange = (v: React.SetStateAction<T>) => {
+    const onChange = (value: React.SetStateAction<T>) => {
+        const newValue = value instanceof Function ? value(field) : value;
         if (callback) {
-            const val = v instanceof Function ? v(value) : value;
-            callback(val, setValue);
+            callback(newValue, setField);
         } else {
-            setValue(value);
+            setField(value);
         }
     };
 
-    return [value, onChange];
+    return [field, onChange];
 };
 
+const useStoredUserField = <T>(
+    defaultValue: T,
+    key: string,
+    callback?: FieldCallback<T>
+): [T, React.Dispatch<React.SetStateAction<T>>] => {
+    const [field, setField] = useUserData(key, defaultValue);
+
+    const onChange = (value: React.SetStateAction<T>) => {
+        const newValue = value instanceof Function ? value(field) : value;
+        if (callback) {
+            callback(newValue, setField);
+        } else {
+            setField(value);
+        }
+    };
+
+    return [field, onChange];
+};
+
+type FieldCallback<T> = (value: T, setValue: (value: T) => void) => void;
+
 export default useFormField;
-export { useStoredField };
+export { useStoredField, useStoredUserField };
+export type { FieldCallback };
