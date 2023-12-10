@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import Button from "../apple-design/components/Buttons/Button";
 import Menu from "../apple-design/components/Menu/Menu";
-import { ACCOUNT_PAGE_LINK, LOGIN_PAGE_LINK } from "../router/links";
+import { ACCOUNT_PAGE_LINK, APPLICATIONS_PAGE_LINK } from "../router/links";
 import supabase from "../supabase/supabase-client";
 
 const HomeDropdown = () => {
@@ -13,6 +13,7 @@ const HomeDropdown = () => {
                 {
                     title: "Application",
                     icon: <i className="ri-list-check" />,
+                    onClick: () => navigate(APPLICATIONS_PAGE_LINK),
                 },
                 {
                     title: "Account",

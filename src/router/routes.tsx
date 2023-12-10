@@ -6,6 +6,7 @@ import RecruitmentPage from "../pages/navbar-subpages/recruitment/RecruitmentPag
 import FormPage from "../pages/navbar-subpages/form/FormPage";
 import {
     ACCOUNT_PAGE_ALIAS,
+    APPLICATIONS_PAGE_ALIAS,
     FORM_CONFIG_PAGE_ALIAS,
     FORM_PAGE_ALIAS,
     LOGIN_PAGE_ALIAS,
@@ -14,9 +15,9 @@ import {
 } from "./aliases";
 import AccountPage from "../pages/navbar-subpages/account/AccountPage";
 import FormConfigPage from "../pages/navbar-subpages/form/FormConfigPage";
-import CuratorialCompetitionsLoader from "../data/data-loader/curatorial-competitions-loader";
 import FormDataLoader from "../data/data-loader/FormDataLoader";
-import Page2 from "../pages/navbar-subpages/form/pages/Page2";
+import ApplicationsPage from "../pages/navbar-subpages/applications/ApplicationsPage";
+import { ApplicationsLoader } from "../pages/navbar-subpages/applications/ApplicationsLoader";
 
 const router = createBrowserRouter([
     {
@@ -42,6 +43,11 @@ const router = createBrowserRouter([
             {
                 path: ACCOUNT_PAGE_ALIAS,
                 element: <AccountPage />,
+            },
+            {
+                path: APPLICATIONS_PAGE_ALIAS,
+                element: <ApplicationsPage />,
+                loader: ApplicationsLoader,
             },
             {
                 path: FORM_CONFIG_PAGE_ALIAS,

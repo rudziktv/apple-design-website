@@ -4,6 +4,7 @@ const RECRUITMENT_PAGE_ALIAS = "recruitment";
 const FORM_PAGE_ALIAS = "formselect";
 const ACCOUNT_PAGE_ALIAS = "account";
 const FORM_CONFIG_PAGE_ALIAS = "form";
+const APPLICATIONS_PAGE_ALIAS = "applications";
 
 export {
     LOGIN_PAGE_ALIAS,
@@ -12,4 +13,5 @@ export {
     FORM_PAGE_ALIAS,
     ACCOUNT_PAGE_ALIAS,
     FORM_CONFIG_PAGE_ALIAS,
+    APPLICATIONS_PAGE_ALIAS,
 };

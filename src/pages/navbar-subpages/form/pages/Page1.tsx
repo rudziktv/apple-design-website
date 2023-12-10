@@ -1,10 +1,7 @@
 import Checkbox from "../../../../apple-design/components/Checkbox/Checkbox";
 import TextInput from "../../../../apple-design/components/TextInput/TextInput";
 import Button from "../../../../apple-design/components/Buttons/Button";
-import {
-    useStoredField,
-    useStoredUserField,
-} from "../../../../hooks/useFieldForm";
+import { useStoredUserField } from "../../../../hooks/useFieldForm";
 import { useNavigate } from "react-router-dom";
 import { transitionFade } from "../../../../apple-design/animation/page-transition";
 import { NameCallbackRegex } from "../../../../security/validation/FormRegex";

@@ -9,3 +9,8 @@
 
     padding: 1rem 5rem;
 }
+
+.application-card {
+    display: flex;
+    flex-direction: column;
+}
