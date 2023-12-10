@@ -1,14 +1,25 @@
 import Checkbox from "../../../../apple-design/components/Checkbox/Checkbox";
 import TextInput from "../../../../apple-design/components/TextInput/TextInput";
 import Button from "../../../../apple-design/components/Buttons/Button";
-import { useStoredField } from "../../../../hooks/useFieldForm";
+import {
+    useStoredField,
+    useStoredUserField,
+} from "../../../../hooks/useFieldForm";
 import { useNavigate } from "react-router-dom";
 import { transitionFade } from "../../../../apple-design/animation/page-transition";
 import { NameCallbackRegex } from "../../../../security/validation/FormRegex";
+import { FormFieldsAliases } from "../../../../data/form-data/FormFiledsAliases";
 
 const Page1 = () => {
-    const [first, setFirst] = useStoredField(false, "first-choice");
-    const [school, setSchool] = useStoredField("", "school", NameCallbackRegex);
+    const [first, setFirst] = useStoredUserField(
+        false,
+        FormFieldsAliases.application.isOurSchoolFirstChoice
+    );
+    const [school, setSchool] = useStoredUserField(
+        "",
+        FormFieldsAliases.application.finishedSchoolName,
+        NameCallbackRegex
+    );
 
     const navigate = useNavigate();
 
@@ -29,6 +40,7 @@ const Page1 = () => {
                 <Button
                     title="Strona Główna"
                     leadingIcon={<i className="ri-home-line" />}
+                    disabled
                 />
                 <Button
                     disabled={!school}

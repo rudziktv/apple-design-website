@@ -109,15 +109,15 @@
 }
 
 .opened .dropdown-items:has(:nth-child(1)) {
-    height: calc(35px);
+    height: 35px;
 }
 
 .opened .dropdown-items:has(:nth-child(2)) {
-    height: calc(70px);
+    height: 70px;
 }
 
-.opened .dropdown-items:has(:nth-child(2)) {
-    height: calc(105px);
+.opened .dropdown-items:has(:nth-child(3)) {
+    height: 105px;
 }
 
 .dropdown-label {

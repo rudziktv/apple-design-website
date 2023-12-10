@@ -11,12 +11,14 @@ const TextInput = ({
     supportingText,
     error,
     containerFocusType = "glow",
+    boxId,
+    boxClassName,
     ...props
 }: TextInputProps) => {
     const ref = useRef<HTMLInputElement>(null);
 
     return (
-        <div className="input-box">
+        <div className={`input-box ${boxClassName}`} id={boxId}>
             {topLabel && <span className="input-top-label">{topLabel}</span>}
             <div
                 onClick={() => ref.current?.focus()}
@@ -62,6 +64,9 @@ export interface TextInputProps
     onTextChange?: (text: string) => void;
     classNameContainer?: string;
     containerFocusType?: "glow" | "outlined" | "thick";
+
+    boxId?: string;
+    boxClassName?: string;
 }
 
 export default TextInput;

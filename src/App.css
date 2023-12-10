@@ -13,10 +13,11 @@
     background-image: url("./assets/wallpapers/iPadOS_wallpaper.png");
     background-size: cover;
     background-blend-mode: multiply;
-    /* position: fixed; */
+    position: fixed;
     /* background-color: rgba(37, 37, 37, 0.82); */
     /* backdrop-filter: blur(8px); */
-    /* z-index: -2; */
+    z-index: -2;
+    pointer-events: none;
 }
 
 p {
@@ -97,6 +98,7 @@ p {
     /* background-blend-mode: multiply; */
     background-color: var(--background-color);
     backdrop-filter: blur(50px);
+    pointer-events: all;
 
     /* background-color: grey; */
 }
@@ -134,12 +136,14 @@ p {
     padding: 2em;
 
     overflow: hidden;
-    /* z-index: -1; */
+    z-index: -1;
 }
 
 .navbar-subpage {
     display: flex;
     flex-direction: column;
+
+    /* align-items: stretch; */
 
     /* flex: 1; */
 
@@ -147,8 +151,10 @@ p {
     backdrop-filter: blur(50px);
 
     max-width: 500px;
+    max-height: 100%;
+    box-sizing: border-box;
 
-    padding: 1em;
+    padding: 1em 0;
     border-radius: 1em;
 
     overflow: hidden;
@@ -158,10 +164,11 @@ p {
 }
 
 .scrollable {
-    flex: 1;
+    /* flex: 1; */
     display: flex;
     flex-direction: column;
     overflow: auto;
+    /* overflow-y: hidden; */
     padding: 0 1em;
 }
 

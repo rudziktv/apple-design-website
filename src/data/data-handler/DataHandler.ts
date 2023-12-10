@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useStoredSession } from "../../hooks/useStoredAuth";
+import supabase from "../../supabase/supabase-client";
 
 const SaveData = <T>(key: string, data: T) => {
     localStorage.setItem(key, JSON.stringify(data));
@@ -18,6 +19,26 @@ const LoadData = <T>(key: string, defaultValue?: T) => {
     }
 
     return {} as T;
+};
+
+const LoadUserData = <T>(key: string, defaultValue?: T) => {
+    const userId = useStoredSession()?.user?.id || "unknown-user";
+    return LoadData<T>(`${userId}-${key}`, defaultValue);
+};
+
+const LoadUserDataID = async <T>(
+    key: string,
+    defaultValue?: T,
+    id?: string
+) => {
+    const userId = id || "unknown-user";
+    return LoadData<T>(`${userId}-${key}`, defaultValue);
+};
+
+const LoadUserDataAsync = async <T>(key: string, defaultValue?: T) => {
+    const userId =
+        (await supabase.auth.getUser()).data.user?.id || "unknown-user";
+    return LoadData<T>(`${userId}-${key}`, defaultValue);
 };
 
 const useSavedData = <T>(
@@ -43,4 +64,12 @@ const useUserData = <T>(key: string, defaultValue?: T) => {
     return useSavedData(`${userId}-${key}`, defaultValue);
 };
 
-export { SaveData, LoadData, useSavedData, useUserData };
+export {
+    SaveData,
+    LoadData,
+    LoadUserData,
+    LoadUserDataAsync,
+    LoadUserDataID,
+    useSavedData,
+    useUserData,
+};

@@ -60,7 +60,6 @@ const LoginPage = () => {
                 className="scrollable"
                 style={{
                     gap: "0.7rem",
-                    padding: "1rem",
                 }}
             >
                 <span className="screen-title">Login to your account</span>

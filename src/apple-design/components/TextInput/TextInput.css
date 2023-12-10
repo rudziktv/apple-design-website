@@ -81,6 +81,7 @@
     font-size: 16px;
 
     transition: 0.15s ease-in-out;
+    min-width: 0;
 }
 
 .input-input:focus,

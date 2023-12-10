@@ -1,5 +1,3 @@
-import { useState } from "react";
-import Checkbox from "../../../../apple-design/components/Checkbox/Checkbox";
 import Button from "../../../../apple-design/components/Buttons/Button";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { transitionFade } from "../../../../apple-design/animation/page-transition";
@@ -7,16 +5,15 @@ import Dropdown from "../../../../apple-design/components/Dropdown/Dropdown";
 import { IDropdownItem } from "../../../../apple-design/components/Dropdown/DropdownItem";
 import { useStoredUserField } from "../../../../hooks/useFieldForm";
 import { IFormData } from "../../../../data/data-loader/FormDataLoader";
+import { FormFieldsAliases } from "../../../../data/form-data/FormFiledsAliases";
 // import supabase from "../../../../supabase/supabase-client";
 
 const Page3 = () => {
     const loaderData = useLoaderData() as IFormData;
 
-    const [competition, setCompetition] = useState(false);
-    // const [name, setName] = useState<IDropdownItem>();
     const [mainProfile, setMainProfile] = useStoredUserField<IDropdownItem>(
         { id: 0, label: "Brak" },
-        "main-profile"
+        FormFieldsAliases.application.mainProfile
     );
 
     const secondaryProfiles = () => {
@@ -41,7 +38,7 @@ const Page3 = () => {
     const [secondaryProfile, setSecondaryProfile] =
         useStoredUserField<IDropdownItem>(
             { id: 0, label: "Dowolny" },
-            "secondary-profile"
+            FormFieldsAliases.application.secondaryProfile
         );
 
     const navigate = useNavigate();
@@ -49,10 +46,6 @@ const Page3 = () => {
     return transitionFade(
         <div className="form-page">
             <span className="form-title-page">Profil</span>
-            {/* <div className="inline-checkbox">
-                <Checkbox value={competition} onChange={setCompetition} />
-                <span>Laureat przedmiotowego konkursu kuratoryjnego</span>
-            </div> */}
             <Dropdown
                 label="Wybierz kierunek pierwszego wyboru"
                 items={loaderData.profiles.map((item) => ({

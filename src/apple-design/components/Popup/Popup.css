@@ -1,0 +1,27 @@
+.popup-blur {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    pointer-events: all;
+
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(48px);
+
+    z-index: 99;
+}
+
+.popup-container {
+    background-color: rgba(34, 34, 34, 0.8);
+    backdrop-filter: blur(16px);
+    box-shadow: 0px 0px 16px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 1rem;
+}

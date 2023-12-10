@@ -97,7 +97,6 @@ const RegisterPage = () => {
                 className="scrollable"
                 style={{
                     gap: "0.7rem",
-                    padding: "1rem",
                 }}
             >
                 <span className="screen-title">Register your account</span>

@@ -1,0 +1,88 @@
+.address-blur {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.address-popup {
+    padding: 0.5rem;
+    /* box-sizing: border-box; */
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+    /* gap: 0.5rem; */
+}
+
+.address-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.address-inline {
+    display: flex;
+    flex-direction: row;
+
+    gap: 0.5rem;
+
+    align-items: center;
+}
+
+.address-actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-top: 0.5rem;
+}
+
+.address-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* padding: 0 0.5rem; */
+    /* border-bottom: 2px solid var(--border-color); */
+}
+
+.address-hr {
+    height: 2px;
+    border: 0;
+    border-radius: 1rem;
+    background-color: var(--border-color);
+    width: 100%;
+
+    margin: 0.5rem 0 0.5rem 0;
+}
+
+.address-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-indent: 0.5rem;
+}
+
+#address-city {
+    flex-grow: 1;
+}
+
+#address-zip {
+    min-width: 115px;
+}
+
+#address-street {
+    flex-grow: 1;
+}
+
+#address-building {
+    min-width: 100px;
+}
+
+#address-apartment {
+    min-width: 82px;
+}

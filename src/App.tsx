@@ -12,6 +12,9 @@ import { AlertActionProps } from "./apple-design/components/Alert/AlertAction";
 import { StoredAuthContext } from "./hooks/useStoredAuth";
 import supabase from "./supabase/supabase-client";
 import { Session } from "@supabase/supabase-js";
+import AddressPopup from "./components/AddressPopup/AddressPopup";
+import Popup from "./apple-design/components/Popup/Popup";
+import PopupContext from "./apple-design/components/Popup/PopupContext";
 
 function App() {
     const auth = useAuth();
@@ -23,6 +26,9 @@ function App() {
     const [alertMessage, setAlertMessage] = useState("");
     const [alertTitle, setAlertTitle] = useState("");
     const [alertActions, setAlertActions] = useState<AlertActionProps[]>([]);
+
+    const [popupVisible, setPopupVisible] = useState(false);
+    const [popupContent, setPopupContent] = useState<React.ReactNode>(<></>);
 
     useEffect(() => {
         const callback = supabase.auth.onAuthStateChange((_, session) => {
@@ -43,47 +49,64 @@ function App() {
                     alertSetActions: setAlertActions,
                 }}
             >
-                <StoredAuthContext.Provider
-                    value={{ authorized: auth, session: session }}
+                <PopupContext.Provider
+                    value={{
+                        popupVisible: popupVisible,
+                        popupContent: popupContent,
+                        popupSetVisible: setPopupVisible,
+                        popupSetContent: setPopupContent,
+                    }}
                 >
-                    <div id="app">
-                        <AnimatePresence>
-                            {alertVisible && (
-                                <Alert
-                                    message={alertMessage}
-                                    title={alertTitle}
-                                    actions={alertActions}
-                                />
-                            )}
-                        </AnimatePresence>
+                    <StoredAuthContext.Provider
+                        value={{ authorized: auth, session: session }}
+                    >
+                        <div id="app">
+                            <AnimatePresence>
+                                {popupVisible && <Popup>{popupContent}</Popup>}
+                            </AnimatePresence>
 
-                        <nav id="navbar">
-                            <div id="navbar-logo">Cyfroweszkoly</div>
-                            <div id="navbar-actions">
-                                <Button title="About" buttonType="text" />
-                                <Button
-                                    title="Recruitment"
-                                    onClick={() => navigate("/recruitment/")}
-                                    buttonType="text"
-                                />
-                                {auth ? (
-                                    <HomeDropdown />
-                                ) : (
-                                    <Button
-                                        title="Log In"
-                                        buttonType="primary"
-                                        onClick={() => navigate("/authorize/")}
+                            <AnimatePresence>
+                                {alertVisible && (
+                                    <Alert
+                                        message={alertMessage}
+                                        title={alertTitle}
+                                        actions={alertActions}
                                     />
                                 )}
-                            </div>
-                        </nav>
-                        <AnimatePresence mode="wait">
-                            <main id="main">
-                                <Outlet />
-                            </main>
-                        </AnimatePresence>
-                    </div>
-                </StoredAuthContext.Provider>
+                            </AnimatePresence>
+
+                            <nav id="navbar">
+                                <div id="navbar-logo">Cyfroweszkoly</div>
+                                <div id="navbar-actions">
+                                    <Button title="About" buttonType="text" />
+                                    <Button
+                                        title="Recruitment"
+                                        onClick={() =>
+                                            navigate("/recruitment/")
+                                        }
+                                        buttonType="text"
+                                    />
+                                    {auth ? (
+                                        <HomeDropdown />
+                                    ) : (
+                                        <Button
+                                            title="Log In"
+                                            buttonType="primary"
+                                            onClick={() =>
+                                                navigate("/authorize/")
+                                            }
+                                        />
+                                    )}
+                                </div>
+                            </nav>
+                            <AnimatePresence mode="wait">
+                                <main id="main">
+                                    <Outlet />
+                                </main>
+                            </AnimatePresence>
+                        </div>
+                    </StoredAuthContext.Provider>
+                </PopupContext.Provider>
             </AlertContext.Provider>
         </>
     );

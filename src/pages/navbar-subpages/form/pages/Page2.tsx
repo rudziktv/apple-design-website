@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Checkbox from "../../../../apple-design/components/Checkbox/Checkbox";
 import Button from "../../../../apple-design/components/Buttons/Button";
 import { useLoaderData, useNavigate } from "react-router-dom";
@@ -7,18 +6,18 @@ import Dropdown from "../../../../apple-design/components/Dropdown/Dropdown";
 import { IDropdownItem } from "../../../../apple-design/components/Dropdown/DropdownItem";
 import { useStoredUserField } from "../../../../hooks/useFieldForm";
 import { IFormData } from "../../../../data/data-loader/FormDataLoader";
-// import supabase from "../../../../supabase/supabase-client";
+import { FormFieldsAliases } from "../../../../data/form-data/FormFiledsAliases";
 
 const Page2 = () => {
     const loaderData = useLoaderData() as IFormData;
 
     const [competition, setCompetition] = useStoredUserField(
         false,
-        "competition-exist"
+        FormFieldsAliases.application.curatorialCompetitionParticipation
     );
     const [name, setName] = useStoredUserField<IDropdownItem>(
         { id: 0, label: "Brak" },
-        "competition-name"
+        FormFieldsAliases.application.curatorialCompetitionName
     );
 
     const navigate = useNavigate();

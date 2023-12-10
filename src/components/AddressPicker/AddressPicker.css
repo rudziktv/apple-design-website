@@ -1,0 +1,23 @@
+.address-picker {
+    padding: 0.5rem;
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    max-height: 90vh;
+}
+
+.address-picker-actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.scrollable.address-content > * {
+    flex-shrink: 0;
+}
+
+.scrollable.address-content {
+    padding: 0;
+}
