@@ -1,8 +1,14 @@
 import { motion } from "framer-motion";
 import "./Alert.css";
 import AlertAction, { AlertActionProps } from "./AlertAction";
+import { Orientation } from "./AlertContext";
 
-const Alert = ({ title, message, actions }: AlertProps) => {
+const Alert = ({
+    title,
+    message,
+    actions,
+    orientation = "vertical",
+}: AlertProps) => {
     return (
         <motion.div
             className="alert-container"
@@ -20,7 +26,7 @@ const Alert = ({ title, message, actions }: AlertProps) => {
                     <span className="alert-title">{title}</span>
                     <span className="alert-message">{message}</span>
                 </div>
-                <div className="alert-actions">
+                <div className={`alert-actions ${orientation}`}>
                     {actions?.map((action, index) => (
                         <AlertAction key={index} {...action} />
                     ))}
@@ -36,6 +42,7 @@ export interface AlertProps {
     title?: string;
     message?: string;
     actions?: AlertActionProps[];
+    orientation?: Orientation;
 }
 
 export default Alert;

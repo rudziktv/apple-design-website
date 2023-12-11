@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { AlertActionProps } from "../apple-design/components/Alert/AlertAction";
-import AlertContext from "../apple-design/components/Alert/AlertContext";
+import AlertContext, {
+    Orientation,
+} from "../apple-design/components/Alert/AlertContext";
 
 /**
  * Hook to set the content and visibility of alert
@@ -12,7 +14,8 @@ import AlertContext from "../apple-design/components/Alert/AlertContext";
 const useAlert = (
     title: string,
     message: string,
-    actions: (setVisible: (value: boolean) => void) => AlertActionProps[]
+    actions: (setVisible: (value: boolean) => void) => AlertActionProps[],
+    orientation?: Orientation
 ) => {
     const alert = useContext(AlertContext);
 
@@ -40,6 +43,7 @@ const useAlert = (
             alert.alertSetActions(actions(alert.alertSetVisible));
         }
         alert.alertSetVisible(visibility);
+        alert.alertSetOrientation(orientation ? orientation : "vertical");
     };
 };
 

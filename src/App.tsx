@@ -6,13 +6,14 @@ import HomeDropdown from "./components/HomeDropdown";
 import useAuth from "./hooks/useAuth";
 import { AnimatePresence } from "framer-motion";
 import Alert from "./apple-design/components/Alert/Alert";
-import AlertContext from "./apple-design/components/Alert/AlertContext";
+import AlertContext, {
+    Orientation,
+} from "./apple-design/components/Alert/AlertContext";
 import { useEffect, useState } from "react";
 import { AlertActionProps } from "./apple-design/components/Alert/AlertAction";
 import { StoredAuthContext } from "./hooks/useStoredAuth";
 import supabase from "./supabase/supabase-client";
 import { Session } from "@supabase/supabase-js";
-import AddressPopup from "./components/AddressPopup/AddressPopup";
 import Popup from "./apple-design/components/Popup/Popup";
 import PopupContext from "./apple-design/components/Popup/PopupContext";
 
@@ -26,6 +27,8 @@ function App() {
     const [alertMessage, setAlertMessage] = useState("");
     const [alertTitle, setAlertTitle] = useState("");
     const [alertActions, setAlertActions] = useState<AlertActionProps[]>([]);
+    const [alertOrientation, setAlertOrientation] =
+        useState<Orientation>("vertical");
 
     const [popupVisible, setPopupVisible] = useState(false);
     const [popupContent, setPopupContent] = useState<React.ReactNode>(<></>);
@@ -47,6 +50,7 @@ function App() {
                     alertSetMessage: setAlertMessage,
                     alertSetTitle: setAlertTitle,
                     alertSetActions: setAlertActions,
+                    alertSetOrientation: setAlertOrientation,
                 }}
             >
                 <PopupContext.Provider
@@ -71,6 +75,7 @@ function App() {
                                         message={alertMessage}
                                         title={alertTitle}
                                         actions={alertActions}
+                                        orientation={alertOrientation}
                                     />
                                 )}
                             </AnimatePresence>

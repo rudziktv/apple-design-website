@@ -7,6 +7,7 @@ interface IAlertContext {
     alertSetMessage: (value: string) => void;
     alertSetTitle: (value: string) => void;
     alertSetActions: (value: AlertActionProps[]) => void;
+    alertSetOrientation: (value: Orientation) => void;
 }
 
 const AlertContext = createContext<IAlertContext>({
@@ -15,6 +16,9 @@ const AlertContext = createContext<IAlertContext>({
     alertSetMessage: () => {},
     alertSetTitle: () => {},
     alertSetActions: () => {},
+    alertSetOrientation: () => {},
 });
+
+export type Orientation = "vertical" | "horizontal";
 
 export default AlertContext;

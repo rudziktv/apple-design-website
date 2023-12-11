@@ -22,6 +22,7 @@
     flex-direction: column;
 
     min-width: 300px;
+    max-width: 370px;
     border-radius: 0.8rem;
 
     background-color: rgba(34, 34, 34, 0.8);
@@ -51,8 +52,27 @@
     align-items: stretch;
 }
 
+.alert-actions.horizontal {
+    flex-direction: row;
+}
+
+.alert-actions.horizontal > * {
+    flex: 1;
+}
+
 .alert-actions > .alert-action:last-child {
     border-radius: 0 0 0.8rem 0.8rem;
+}
+
+.alert-actions.horizontal > *:first-child {
+    border-radius: 0 0 0 0.8rem;
+    /* border-bottom-left-radius: 0.8rem; */
+}
+
+.alert-actions.horizontal > *:last-child {
+    /* border-radius: 0; */
+    border-radius: 0 0 0.8rem 0;
+    /* border-bottom-right-radius: 0.8rem; */
 }
 
 .alert-actions > .alert-action {
