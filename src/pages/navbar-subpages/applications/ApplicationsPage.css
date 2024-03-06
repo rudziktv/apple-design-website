@@ -1,0 +1,18 @@
+.application-card {
+    background-color: #0000001f;
+    border-radius: 1em;
+    padding: 0.5em;
+    gap: 0.2em;
+    align-items: start;
+}
+
+.applications-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    padding: 0.5em;
+}
+
+.app-submit-date {
+    color: var(--border-color);
+}

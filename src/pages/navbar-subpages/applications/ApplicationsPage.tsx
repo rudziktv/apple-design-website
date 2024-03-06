@@ -1,5 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import { IApplicationLoader } from "./ApplicationsLoader";
+import "./ApplicationsPage.css";
+import ApplicationItem from "./ApplicationItem";
 
 const ApplicationsPage = () => {
     const loaderData = useLoaderData() as IApplicationLoader;
@@ -8,13 +10,9 @@ const ApplicationsPage = () => {
         <div className="navbar-subpage">
             <div className="scrollable">
                 <span className="screen-title">Zgłoszenia</span>
-                <div>
+                <div className="applications-list">
                     {loaderData.applications.map((item) => (
-                        <div className="application-card" key={item.id}>
-                            <span>{item.submit_date}</span>
-                            <span>{item.finished_school}</span>
-                            <span>{String(item.first_choice)}</span>
-                        </div>
+                        <ApplicationItem item={item} key={item.id} />
                     ))}
                 </div>
             </div>

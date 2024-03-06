@@ -34,6 +34,30 @@ const AccountPage = () => {
         "horizontal"
     );
 
+    const confitmClearAll = useAlert(
+        "Confirmation",
+        "Are you sure you want to clear local and application data? You will be automaticlly sign out.",
+        (set) => [
+            {
+                title: "Yes",
+                onClick: async () => {
+                    localStorage.clear();
+                    await supabase.auth.signOut();
+                    set(false);
+                    navigate(LOGIN_PAGE_LINK);
+                },
+            },
+            {
+                title: "No",
+                onClick: () => {
+                    set(false);
+                },
+                color: "error",
+            },
+        ],
+        "horizontal"
+    );
+
     useEffect(() => {
         if (!auth) {
             navigate(LOGIN_PAGE_LINK);
@@ -59,7 +83,7 @@ const AccountPage = () => {
                 <Button
                     leadingIcon={<i className="ri-article-line" />}
                     title="Clear Applications Data"
-                    onClick={() => {}}
+                    onClick={() => confitmClearAll(true)}
                     disabled
                 />
             </div>

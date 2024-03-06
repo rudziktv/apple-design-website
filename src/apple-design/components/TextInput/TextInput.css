@@ -82,6 +82,7 @@
 
     transition: 0.15s ease-in-out;
     min-width: 0;
+    color: white;
 }
 
 .input-input:focus,
