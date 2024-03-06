@@ -17,6 +17,7 @@ import { Session } from "@supabase/supabase-js";
 import Popup from "./apple-design/components/Popup/Popup";
 import PopupContext from "./apple-design/components/Popup/PopupContext";
 import LoadingPopup from "./apple-design/components/LoadingPopup/LoadingPopup";
+import NavbarOS from "./components/NavbarOS/NavbarOS";
 
 function App() {
     const auth = useAuth();
@@ -110,6 +111,9 @@ function App() {
                                     )}
                                 </div>
                             </nav>
+
+                            <NavbarOS />
+
                             <AnimatePresence mode="wait">
                                 <main id="main">
                                     {state == "loading" ? (

@@ -1,16 +1,26 @@
 .alert-action {
     border: none;
-    background-color: transparent;
+    background-color: #007aff;
 
     /* color: var(--primary-color); */
 
-    font-size: 1.4rem;
+    font-size: 1rem;
+    border-radius: 5px;
 
     cursor: pointer;
 
     padding: 0.6rem 1rem;
     overflow: hidden;
     position: relative;
+}
+
+.alert-action.error {
+    background-color: var(--error-color);
+
+    /* background-color: rgba(80, 80, 80, 0.5);
+    color: var(--error-color);
+
+    backdrop-filter: blur(30px); */
 }
 
 .alert-action::after {

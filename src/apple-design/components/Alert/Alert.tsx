@@ -8,6 +8,7 @@ const Alert = ({
     message,
     actions,
     orientation = "vertical",
+    icon = <i className="ri-error-warning-line" />,
 }: AlertProps) => {
     return (
         <motion.div
@@ -22,6 +23,7 @@ const Alert = ({
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0, opacity: 0 }}
             >
+                <div className="alert-icon">{icon}</div>
                 <div className="alert-content">
                     <span className="alert-title">{title}</span>
                     <span className="alert-message">{message}</span>
@@ -43,6 +45,7 @@ export interface AlertProps {
     message?: string;
     actions?: AlertActionProps[];
     orientation?: Orientation;
+    icon?: React.ReactNode;
 }
 
 export default Alert;

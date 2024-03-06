@@ -8,12 +8,10 @@ const AlertAction = ({
     return (
         <button
             onClick={onClick}
-            className="alert-action"
-            style={{
-                color: `var(${
-                    color == "error" ? "--error-color" : "--primary-color"
-                })`,
-            }}
+            className={`alert-action ${color}`}
+            // style={{
+            //     color: `var(${color == "error" ? "--error-color" : "white"})`,
+            // }}
         >
             {title}
         </button>

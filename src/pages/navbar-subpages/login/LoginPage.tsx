@@ -37,16 +37,20 @@ const LoginPage = () => {
         }
     }, [auth]);
 
-    const forgot = useAlert("Forgot password?", "Skill issue", (setVisible) => [
-        {
-            title: "OK",
-            onClick: () => setVisible(false),
-        },
-    ]);
+    const forgot = useAlert(
+        "Forgot password?",
+        "This feature is still under development. Not avaiable yet.",
+        (setVisible) => [
+            {
+                title: "Confirm",
+                onClick: () => setVisible(false),
+            },
+        ]
+    );
 
     const loginAlert = useAlert("Error during login", "", (setVisible) => [
         {
-            title: "OK",
+            title: "Confirm",
             onClick: () => setVisible(false),
             color: "error",
         },
@@ -62,6 +66,7 @@ const LoginPage = () => {
                     gap: "0.7rem",
                 }}
             >
+                {/* <LoadingPopup /> */}
                 <span className="screen-title">Login to your account</span>
                 <TextInput
                     label="Email"

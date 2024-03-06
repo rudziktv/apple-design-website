@@ -1,0 +1,59 @@
+.navbar-os {
+    display: flex;
+
+    height: 28px;
+    /* width: 100vw; */
+
+    background-color: rgba(0, 0, 0, 0.18);
+    backdrop-filter: blur(48px);
+
+    align-items: center;
+
+    pointer-events: all;
+
+    padding: 0 4px;
+}
+
+.navbar-os-item {
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 12px;
+
+    overflow: hidden;
+    border-radius: 5px;
+    position: relative;
+
+    gap: 8px;
+
+    font-weight: 400;
+}
+
+.navbar-os-item::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+
+    transition: 0.2s;
+}
+
+.navbar-os-group {
+    display: flex;
+    height: 100%;
+}
+
+.navbar-os-item:hover::after {
+    background-color: rgba(255, 255, 255, 0.18);
+    cursor: pointer;
+    /* background-color: black; */
+}
+
+.navbar-os-item.active {
+    font-weight: 600;
+}
