@@ -1,12 +1,18 @@
+import { motion } from "framer-motion";
 import Loading from "../Loading/Loading";
 import "./LoadingPopup.css";
 
 const LoadingPopup = () => {
     return (
-        <div className="loading-popup">
+        <motion.div
+            className="loading-popup"
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0, opacity: 0 }}
+        >
             <Loading />
             <span>Loading...</span>
-        </div>
+        </motion.div>
     );
 };
 

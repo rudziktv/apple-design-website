@@ -1,6 +1,6 @@
 import "./App.css";
 import "remixicon/fonts/remixicon.css";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate, useNavigation } from "react-router-dom";
 import Button from "./apple-design/components/Buttons/Button";
 import HomeDropdown from "./components/HomeDropdown";
 import useAuth from "./hooks/useAuth";
@@ -16,10 +16,12 @@ import supabase from "./supabase/supabase-client";
 import { Session } from "@supabase/supabase-js";
 import Popup from "./apple-design/components/Popup/Popup";
 import PopupContext from "./apple-design/components/Popup/PopupContext";
+import LoadingPopup from "./apple-design/components/LoadingPopup/LoadingPopup";
 
 function App() {
     const auth = useAuth();
     const navigate = useNavigate();
+    const { state } = useNavigation();
 
     const [session, setSession] = useState<Session | null>(null);
 
@@ -83,7 +85,11 @@ function App() {
                             <nav id="navbar">
                                 <div id="navbar-logo">Cyfroweszkoly</div>
                                 <div id="navbar-actions">
-                                    <Button title="About" buttonType="text" />
+                                    <Button
+                                        title="About"
+                                        buttonType="text"
+                                        onClick={() => navigate("/about")}
+                                    />
                                     <Button
                                         title="Recruitment"
                                         onClick={() =>
@@ -106,7 +112,11 @@ function App() {
                             </nav>
                             <AnimatePresence mode="wait">
                                 <main id="main">
-                                    <Outlet />
+                                    {state == "loading" ? (
+                                        <LoadingPopup />
+                                    ) : (
+                                        <Outlet />
+                                    )}
                                 </main>
                             </AnimatePresence>
                         </div>

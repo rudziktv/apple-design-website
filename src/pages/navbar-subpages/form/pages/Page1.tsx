@@ -37,7 +37,7 @@ const Page1 = () => {
                 <Button
                     title="Strona Główna"
                     leadingIcon={<i className="ri-home-line" />}
-                    disabled
+                    onClick={() => navigate("/account")}
                 />
                 <Button
                     disabled={!school}

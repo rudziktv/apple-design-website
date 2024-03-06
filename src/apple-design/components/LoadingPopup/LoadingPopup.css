@@ -8,6 +8,10 @@
     font-weight: 600;
 
     padding: 1rem 5rem;
+
+    background-color: var(--background-color);
+    border-radius: 1em;
+    /* color: var(--primary-color); */
 }
 
 .application-card {

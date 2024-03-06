@@ -5,6 +5,7 @@ import RegisterPage from "../pages/navbar-subpages/register/RegisterPage";
 import RecruitmentPage from "../pages/navbar-subpages/recruitment/RecruitmentPage";
 import FormPage from "../pages/navbar-subpages/form/FormPage";
 import {
+    ABOUT_PAGE_ALIAS,
     ACCOUNT_PAGE_ALIAS,
     APPLICATIONS_PAGE_ALIAS,
     FORM_CONFIG_PAGE_ALIAS,
@@ -18,6 +19,7 @@ import FormConfigPage from "../pages/navbar-subpages/form/FormConfigPage";
 import FormDataLoader from "../data/data-loader/FormDataLoader";
 import ApplicationsPage from "../pages/navbar-subpages/applications/ApplicationsPage";
 import { ApplicationsLoader } from "../pages/navbar-subpages/applications/ApplicationsLoader";
+import AboutPage from "../pages/navbar-subpages/about/AboutPage";
 
 const router = createBrowserRouter([
     {
@@ -48,6 +50,10 @@ const router = createBrowserRouter([
                 path: APPLICATIONS_PAGE_ALIAS,
                 element: <ApplicationsPage />,
                 loader: ApplicationsLoader,
+            },
+            {
+                path: ABOUT_PAGE_ALIAS,
+                element: <AboutPage />,
             },
             {
                 path: FORM_CONFIG_PAGE_ALIAS,
